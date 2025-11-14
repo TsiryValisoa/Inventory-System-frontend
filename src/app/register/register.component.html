@@ -1,1 +1,33 @@
-<p>register works!</p>
+<div class="auth-component">
+    <h2 class="title">Register</h2>
+    
+    <p *ngIf="message" class="message">{{message}}</p>
+        <form (ngSubmit)="handleSubmit()" class="form">
+            <label>
+                <input type="text" class="input" [(ngModel)]="formData.name" name="name" required>
+                <span>Name</span>
+            </label>
+        
+            <label>
+                <input type="email" class="input" [(ngModel)]="formData.email" name="email" required>
+                <span>Email</span>
+            </label>
+        
+            <label>
+                <input type="password" class="input" [(ngModel)]="formData.password" name="password" required>
+                <span>Password</span>
+            </label>
+            
+            <label>
+                <input type="text" class="input" [(ngModel)]="formData.phoneNumber" name="phoneNumber" required>
+                <span>Phone number</span>
+            </label>
+
+            <button type="submit" class="submit">Save</button>
+        </form>
+
+    <p class="signin">
+        Already have an account?
+        <a routerLink="/login" routerLinkActive="router-link-active">Login</a>
+    </p>
+</div>
