@@ -2,13 +2,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import CryptoJs from "crypto-js";
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  private static BASE_URL = 'http://localhost:5050/api';
   private static EBCRIPTION_KEY = "my-encryption-key";
 
   authStatusChanged = new EventEmitter<void>();
@@ -52,15 +52,15 @@ export class ApiService {
 
   //User API
   registerUser(body: any) : Observable<any> {
-    return this.http.post(`${ApiService.BASE_URL}/auth/register`, body);
+    return this.http.post(`${environment.apiUrl}/auth/register`, body);
   }
 
   loginUser(body: any) : Observable<any> {
-    return this.http.post(`${ApiService.BASE_URL}/auth/login`, body);
+    return this.http.post(`${environment.apiUrl}/auth/login`, body);
   }
 
   getAllUser() : Observable<any> {
-    return this.http.get(`${ApiService.BASE_URL}/users/all`,
+    return this.http.get(`${environment.apiUrl}/users/all`,
       {
         headers: this.getHeader()
       }
@@ -68,13 +68,13 @@ export class ApiService {
   }
 
   getLoggedInUserInfo() : Observable<any> {
-    return this.http.get(`${ApiService.BASE_URL}/users/current`, {
+    return this.http.get(`${environment.apiUrl}/users/current`, {
       headers: this.getHeader()
     });
   }
 
   updateUser(id: string, body: any) : Observable<any> {
-    return this.http.put(`${ApiService.BASE_URL}/users/update/${id}`,
+    return this.http.put(`${environment.apiUrl}/users/update/${id}`,
       body,
       {
         headers: this.getHeader()
@@ -83,7 +83,7 @@ export class ApiService {
   }
 
   deleteUser(id: string) : Observable<any> {
-    return this.http.delete(`${ApiService.BASE_URL}/users/delete/${id}`,
+    return this.http.delete(`${environment.apiUrl}/users/delete/${id}`,
       {
         headers: this.getHeader()
       }
@@ -91,7 +91,7 @@ export class ApiService {
   }
 
   listUserAndTransaction(id: string) : Observable<any> {
-    return this.http.get(`${ApiService.BASE_URL}/users/transactions/${id}`,
+    return this.http.get(`${environment.apiUrl}/users/transactions/${id}`,
       {
         headers: this.getHeader()
       }
@@ -100,7 +100,7 @@ export class ApiService {
 
   //Category API
   createCategory(body: any) : Observable<any> {
-    return this.http.post(`${ApiService.BASE_URL}/categories/add`,
+    return this.http.post(`${environment.apiUrl}/categories/add`,
       body,
       {
         headers: this.getHeader()
@@ -109,7 +109,7 @@ export class ApiService {
   }
 
   listAllCategories() : Observable <any> {
-    return this.http.get(`${ApiService.BASE_URL}/categories/all`,
+    return this.http.get(`${environment.apiUrl}/categories/all`,
       {
         headers: this.getHeader()
       }
@@ -117,7 +117,7 @@ export class ApiService {
   }
 
   listCategoryById(id: string) : Observable <any> {
-    return this.http.get(`${ApiService.BASE_URL}/categories/${id}`,
+    return this.http.get(`${environment.apiUrl}/categories/${id}`,
       {
         headers: this.getHeader()
       }
@@ -126,7 +126,7 @@ export class ApiService {
 
   updateCategory(id: string, body: any) : Observable<any> {
     return this.http.put(
-      `${ApiService.BASE_URL}/categories/update/${id}`,
+      `${environment.apiUrl}/categories/update/${id}`,
       body,
       {
         headers: this.getHeader()
@@ -135,14 +135,14 @@ export class ApiService {
   }
 
   deleteCategory(id: string) : Observable<any> {
-    return this.http.delete(`${ApiService.BASE_URL}/categories/delete/${id}`, {
+    return this.http.delete(`${environment.apiUrl}/categories/delete/${id}`, {
       headers: this.getHeader()
     });
   }
 
   //Supplier API
   addSupplier(body: any) : Observable<any> {
-    return this.http.post(`${ApiService.BASE_URL}/suppliers/add`,
+    return this.http.post(`${environment.apiUrl}/suppliers/add`,
       body,
       {
         headers: this.getHeader()
@@ -151,7 +151,7 @@ export class ApiService {
   }
 
   listAllSuppliers() : Observable<any> {
-    return this.http.get(`${ApiService.BASE_URL}/suppliers/all`,
+    return this.http.get(`${environment.apiUrl}/suppliers/all`,
       {
         headers: this.getHeader()
       }
@@ -159,7 +159,7 @@ export class ApiService {
   }
 
   listSupplierById(id: string) : Observable<any> {
-    return this.http.get(`${ApiService.BASE_URL}/suppliers/${id}`,
+    return this.http.get(`${environment.apiUrl}/suppliers/${id}`,
       {
         headers: this.getHeader()
       }
@@ -167,7 +167,7 @@ export class ApiService {
   }
 
   updateSupplier(id: string, body: any) : Observable<any> {
-    return this.http.put(`${ApiService.BASE_URL}/suppliers/update/${id}`,
+    return this.http.put(`${environment.apiUrl}/suppliers/update/${id}`,
       body,
       {
         headers: this.getHeader()
@@ -176,7 +176,7 @@ export class ApiService {
   }
 
   deleteSupplier(id: string) : Observable<any> {
-    return this.http.delete(`${ApiService.BASE_URL}/suppliers/delete/${id}`,
+    return this.http.delete(`${environment.apiUrl}/suppliers/delete/${id}`,
       {
         headers: this.getHeader()
       }
@@ -185,7 +185,7 @@ export class ApiService {
 
   //Product API
   addProduct(formData: any) : Observable<any> {
-    return this.http.post(`${ApiService.BASE_URL}/products/add`,
+    return this.http.post(`${environment.apiUrl}/products/add`,
       formData,
       {
         headers: this.getHeader()
@@ -194,7 +194,7 @@ export class ApiService {
   } 
 
   listAllProducts() : Observable<any> {
-    return this.http.get(`${ApiService.BASE_URL}/products/all`,
+    return this.http.get(`${environment.apiUrl}/products/all`,
       {
         headers: this.getHeader()
       }
@@ -202,7 +202,7 @@ export class ApiService {
   }
 
   listProductById(id: string) : Observable<any> {
-    return this.http.get(`${ApiService.BASE_URL}/products/${id}`,
+    return this.http.get(`${environment.apiUrl}/products/${id}`,
       {
         headers : this.getHeader()
       }
@@ -210,7 +210,7 @@ export class ApiService {
   }
 
   updateProduct(id: string, formData: any) : Observable<any> {
-    return this.http.put(`${ApiService.BASE_URL}/products/update/${id}`,
+    return this.http.put(`${environment.apiUrl}/products/update/${id}`,
       formData,
       {
         headers: this.getHeader()
@@ -219,7 +219,7 @@ export class ApiService {
   }
 
   deleteProduct(id: string) : Observable<any> {
-    return this.http.delete(`${ApiService.BASE_URL}/products/delete/${id}`,
+    return this.http.delete(`${environment.apiUrl}/products/delete/${id}`,
       {
         headers: this.getHeader()
       }
@@ -228,7 +228,7 @@ export class ApiService {
 
   //Transaction API
   purchaseProduct(body: any) : Observable<any> {
-    return this.http.post(`${ApiService.BASE_URL}/transactions/purchase`,
+    return this.http.post(`${environment.apiUrl}/transactions/purchase`,
       body,
       {
         headers: this.getHeader()
@@ -237,7 +237,7 @@ export class ApiService {
   }
 
   sellProduct(body: any) : Observable<any> {
-    return this.http.post(`${ApiService.BASE_URL}/transactions/sell`,
+    return this.http.post(`${environment.apiUrl}/transactions/sell`,
       body,
       {
         headers: this.getHeader()
@@ -246,7 +246,7 @@ export class ApiService {
   }
 
   returnProduct(body: any) : Observable<any> {
-    return this.http.post(`${ApiService.BASE_URL}/transactions/return`,
+    return this.http.post(`${environment.apiUrl}/transactions/return`,
       body,
       {
         headers: this.getHeader()
@@ -255,7 +255,7 @@ export class ApiService {
   }
 
   listAllTransactions(page: number, size: number, searchText: string) : Observable<any> {
-    return this.http.get(`${ApiService.BASE_URL}/transactions/all`,
+    return this.http.get(`${environment.apiUrl}/transactions/all`,
       {
         params: { page: page, searchText: searchText, size: size},
         headers : this.getHeader()
@@ -264,7 +264,7 @@ export class ApiService {
   }
 
   listTransactionById(id: string) : Observable<any> {
-    return this.http.get(`${ApiService.BASE_URL}/transactions/${id}`,
+    return this.http.get(`${environment.apiUrl}/transactions/${id}`,
       {
         headers: this.getHeader()
       }
@@ -272,7 +272,7 @@ export class ApiService {
   }
 
   listByMonthAndYear(month: number, year: number) : Observable<any> {
-    return this.http.get(`${ApiService.BASE_URL}/transactions/by-mont-year`,
+    return this.http.get(`${environment.apiUrl}/transactions/by-mont-year`,
       {
         headers: this.getHeader(),
         params: {
@@ -284,7 +284,7 @@ export class ApiService {
   }
 
   updateTransaction(id: string, transactionStatus: string) : Observable<any> {
-    return this.http.put(`${ApiService.BASE_URL}/transactions/update/${id}`,
+    return this.http.put(`${environment.apiUrl}/transactions/update/${id}`,
       JSON.stringify(transactionStatus),
       {
         headers: this.getHeader().set("Content-Type", "application/json")
