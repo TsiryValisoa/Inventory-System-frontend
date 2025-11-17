@@ -46,7 +46,7 @@ export class ApiService {
     const token = this.getFromStorageAndDecrypt("token");
 
     return new HttpHeaders({
-      Authorization: 'Bearer ${token}'
+      Authorization: `Bearer ${token}`
     });
   }
 

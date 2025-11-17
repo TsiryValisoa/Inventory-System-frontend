@@ -1,1 +1,51 @@
-<p>category works!</p>
+<div class="category-component">
+    <div *ngIf="message" class="message">{{message}}</div>
+
+    <div class="category-header">
+        <h1>Category</h1>
+
+        <div class="add-cat">
+            <input type="text" [(ngModel)]="categoryName" placeholder="Category name">
+
+             <!-- Bouton Add -->
+            <button *ngIf="!isEditing" (click)="addCategory()">
+                <i class="fa-solid fa-circle-plus" style="margin-right:8px;"></i>Add category
+            </button>
+
+            <!-- Bouton Edit -->
+            <button *ngIf="isEditing" (click)="editCategory()">
+                <i class="fa-solid fa-pencil" style="margin-right:8px;"></i>Edit category
+            </button>
+
+            <!-- Bouton Refresh -->
+             <button *ngIf="isEditing" (click)=" resterForm()" class="refresh-btn" title="Go back">
+                <i class="fa-solid fa-arrow-rotate-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <ul *ngIf="categories.length > 0" class="category-list">
+        <li *ngFor="let category of categories" class="category-item">
+            <span>{{category.name}}</span>
+            <div class="category-actions">
+                <button (click)="handleEditCategory(category)" title="Edit">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </button>
+                <button (click)="deleteCategory(category.id)" title="Delete">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+            </div>
+        </li>
+    </ul>
+
+    <!-- Delete confirmation modal -->
+     <div class="modal-backdrop"  *ngIf="showDeleteModal">
+        <div class="modal">
+            <h3>Are you sure you want to delete this category?</h3>
+            <div class="modal-buttons">
+                <button (click)="confirmDelete()">Yes</button>
+                <button (click)="cancelDelete()">No</button>
+            </div>
+        </div>
+     </div>
+</div>

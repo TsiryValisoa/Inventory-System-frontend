@@ -48,7 +48,7 @@ export class LoginComponent {
     this.message = message;
     //Disappear after
     setTimeout(() => {
-      this.message = null
+      this.message = null;
     }, 4000)
   }
 

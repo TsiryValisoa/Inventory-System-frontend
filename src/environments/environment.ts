@@ -1,3 +1,4 @@
 export const environment = {
-  apiUrl: process.env['SB_APP_BASE_URL']
+   production: false,
+  apiUrl: "http://localhost:5050/api"
 };

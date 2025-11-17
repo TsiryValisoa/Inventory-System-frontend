@@ -1,0 +1,129 @@
+.category-component {
+    padding: 20px;
+}
+     
+.category-header {
+    margin-left: 12px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+     
+.category-header h1 {
+    color: #105acaff;
+}
+     
+.add-cat {
+    margin: 0 auto;
+}
+
+input {
+    border-radius: 10px;
+    outline: none;
+}
+
+input:focus {
+    border: 1px solid #759ceb !important;;
+}
+     
+.category-header input {
+    padding: 10px;
+    margin-right: 10px;
+    width: 300px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+     
+.category-header button {
+    padding: 12px 12px;
+    background-color: #105acaff;
+    font-size: 16px;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.category-header button.refresh-btn {
+    background-color: #13d188;
+    margin-left: 10px;
+}
+     
+.category-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 50px;
+}
+     
+.category-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 18px;
+    margin: 5px;
+    font-size: 16px;
+    background-color: #f0efef;
+    border-bottom: 1px solid #eee;
+    border-radius: 10px;
+    color: #505050;
+    font-weight: 550;
+}
+     
+.category-item:hover {
+    background-color: #b5d8ff;
+}
+     
+.category-actions button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #105acaff;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+     
+.category-actions button:last-child {
+    background-color: #c52435;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 100px;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.modal h3 {
+  margin-bottom: 20px;
+}
+
+.modal-buttons button {
+  padding: 10px 15px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-buttons button:first-child {
+  background-color: #c52435;
+  color: white;
+}
+
+.modal-buttons button:last-child {
+  background-color: #838383;
+}
