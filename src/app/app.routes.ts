@@ -35,7 +35,7 @@ export const routes: Routes = [
     { path: 'trasaction/:transactionId', component: TransactionDetailsComponent, canActivate: [GuardService] },
 
     { path: 'profile', component: ProfileComponent, canActivate: [GuardService] },
-    { path: 'category', component: DashboardComponent, canActivate: [GuardService] },
+    { path: 'dashboard', component: DashboardComponent, canActivate: [GuardService] },
 
     { path: "", redirectTo: "/login", pathMatch: 'full'},
     { path: "**", redirectTo: "/dashboard"},

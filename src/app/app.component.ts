@@ -11,7 +11,7 @@ import { ApiService } from './Service/api.service';
 })
 export class AppComponent {
 
-  title = 'IMS-app';
+  title = 'IMS';
 
   constructor(private apiService: ApiService, private router: Router, private cdr: ChangeDetectorRef) {}
 

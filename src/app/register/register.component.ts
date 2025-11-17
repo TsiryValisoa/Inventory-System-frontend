@@ -25,7 +25,11 @@ export class RegisterComponent {
   message: string | null = null;
 
   async handleSubmit() {
-    if (!this.formData) {
+    if (!this.formData.name ||
+        !this.formData.email ||
+        !this.formData.password ||
+        !this.formData.phoneNumber
+    ) {
       this.showMessage("All fields are required!");
       return;
     }

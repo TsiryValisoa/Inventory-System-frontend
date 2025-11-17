@@ -1,11 +1,13 @@
 .dashboard-layout {
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
+    align-items: stretch;
 }
      
 .sidebar { 
     width: 13%;
-    height: 100vh;
+    min-width: 170px; 
+    max-width: 250px;
     background: linear-gradient(135deg, #094baf, #131c25);
     color: #f1f1f1;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -13,8 +15,9 @@
     justify-content: space-between;
     padding: 30px 0px;
     box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
-    position: fixed;
     transition: all 0.3s ease;
+    position: relative;
+    min-height: 100%;
 }
      
 .ims {
@@ -37,10 +40,11 @@
 .nav-links li {
     margin: 15px 0;
     transition: transform 0.2s ease-in-out;
+    margin-left: 13px;
 }
      
 .nav-links li a {
-    display: block;
+    display: flex;
     color: #f1f1f1;
     text-decoration: none;
     padding: 10px 15px;
@@ -51,9 +55,14 @@
     font-weight: 500;
     letter-spacing: 0.5px;
 }
-     
+   
 .nav-links li a:hover {
     background-color: #0f2235;
+    margin-left: 10px;
+}
+
+.nav-links li a {
+    cursor: pointer;
 }
 
 .nav-links a:hover {
@@ -67,12 +76,6 @@
      
 .nav-links li:hover a {
     background: rgba(2, 19, 51, 0.534);
-}
-     
-.nav-links a::before {
-    content: '→ ';
-    opacity: 0;
-    transition: opacity 0.2s ease, margin-left 0.3s ease;
 }
      
 .nav-links li:hover a::before {
@@ -100,11 +103,9 @@
     }
 }   
     
-/* Adjust margin to match the fixed sidebar width */
 .main-content {
-    margin-left: 12%;
-    /* Sidebar width when fixed */
-    flex-grow: 1;
+    flex: 1;
     padding: 20px;
-    transition: margin-left 0.3s ease;
+    min-width: 0;
+    overflow-y: auto;
 }
