@@ -37,7 +37,11 @@ export const routes: Routes = [
     { path: 'profile', component: ProfileComponent, canActivate: [GuardService] },
     { path: 'dashboard', component: DashboardComponent, canActivate: [GuardService] },
 
-    { path: "", redirectTo: "/login", pathMatch: 'full'},
+    { 
+        path: "",
+        redirectTo: localStorage.getItem('token') ? 'dashboard' : 'login',
+        pathMatch: 'full'
+    },
     { path: "**", redirectTo: "/dashboard"},
 
 ];
