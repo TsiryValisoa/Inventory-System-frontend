@@ -19,6 +19,8 @@ export class CategoryComponent implements OnInit {
   editingCategoryId: string | null = null;
   showDeleteModal: boolean = false;
   categoryToDeleteId: string | null = null;
+  searchCategory: string = '';
+  messageType: 'success' | 'error' |'' = '';
 
   constructor(private apiService: ApiService) {}
 
@@ -29,14 +31,14 @@ export class CategoryComponent implements OnInit {
   addCategory(): void {
 
     if (!this.categoryName) {
-      this.showMessage("Category name is required");
+      this.showMessage("Category name is required !", 'error');
       return;
     }
 
     this.apiService.createCategory({name: this.categoryName}).subscribe({
       next: (response: any) => {
         if (response.status === 200) {
-          this.showMessage(response.message);
+          this.showMessage(response.message, 'success');
           this.categoryName = '';
           this.getCategories();
         }
@@ -49,7 +51,7 @@ export class CategoryComponent implements OnInit {
 
   getCategories() : void {
 
-    this.apiService.listAllCategories().subscribe({
+    this.apiService.listAllCategories(this.searchCategory).subscribe({
       next: (response: any) => {
         if (response.status === 200) {
           this.categories = response.categories;
@@ -72,7 +74,7 @@ export class CategoryComponent implements OnInit {
     this.apiService.updateCategory(this.editingCategoryId, {name: this.categoryName}).subscribe({
       next: (response: any) => {
         if (response.status === 200) {
-          this.showMessage(response.message);
+          this.showMessage(response.message, 'success');
           this.categoryName = '';
           this.isEditing = false;
           this.getCategories();
@@ -92,8 +94,8 @@ export class CategoryComponent implements OnInit {
     this.categoryName = category.name;
   }
 
-  //reset form to add
-  resterForm() {
+  //Cancel form to add
+  resterForm(): void {
     this.categoryName = '';
     this.isEditing = false;
     this.editingCategoryId = null;
@@ -110,7 +112,7 @@ export class CategoryComponent implements OnInit {
       this.apiService.deleteCategory(this.categoryToDeleteId).subscribe({
         next: (response: any) => {
         if (response.status === 200) {
-          this.showMessage(response.message);
+          this.showMessage(response.message, 'success');
           this.getCategories();
         }
       },
@@ -130,8 +132,9 @@ export class CategoryComponent implements OnInit {
     this.categoryToDeleteId = null;
   }
 
-  showMessage(message: string) {
-    this.message = message;
+  showMessage(msg: string, type: 'success' | 'error' = 'error') {
+    this.message = msg;
+    this.messageType = type;
     //Disappear after
     setTimeout(() => {
       this.message = null;
