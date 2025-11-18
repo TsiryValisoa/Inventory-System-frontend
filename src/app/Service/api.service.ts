@@ -108,9 +108,10 @@ export class ApiService {
     );
   }
 
-  listAllCategories() : Observable <any> {
+  listAllCategories(search: string) : Observable <any> {
     return this.http.get(`${environment.apiUrl}/categories/all`,
       {
+        params: {search},
         headers: this.getHeader()
       }
   );
