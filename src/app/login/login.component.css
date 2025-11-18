@@ -47,11 +47,6 @@
   background-color: #105acaff;
 }
 
-.asterix {
-    color: red !important;
-    padding-left: 43px;
-}
-
 .title::after {
   width: 18px;
   height: 18px;
@@ -64,7 +59,7 @@
     margin-top: 0;
     margin-bottom: 15px;
     text-align: center;
-    background-color: #f13a3aed;
+    background-color: #c52435;
 }
 
 .form label {
