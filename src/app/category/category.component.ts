@@ -108,6 +108,7 @@ export class CategoryComponent implements OnInit {
 
   //Confirm delete
   confirmDelete(): void {
+
     if (this.categoryToDeleteId) {
       this.apiService.deleteCategory(this.categoryToDeleteId).subscribe({
         next: (response: any) => {
@@ -117,13 +118,12 @@ export class CategoryComponent implements OnInit {
         }
       },
       error: (error) => {
-        this.showMessage(error?.error?.message || error?.messgae || "Unable to edit category" + error);
+        this.showMessage(error?.error?.message || error?.messgae || "Unable to delete category" + error);
       }
       })
     }
     //Close modal
-    this.showDeleteModal = false;
-    this.categoryToDeleteId = null;
+    this.cancelDelete();
   }
 
   //cancel delete
