@@ -1,1 +1,46 @@
-<p>supplier works!</p>
+<div class="supplier-component">
+    <div *ngIf="message" class="message">{{message}}</div>
+
+    <div class="supplier-header">
+        <h1>Supplier</h1>
+
+        <div class="supplier-controls">
+            <div class="add-sup">
+                <button (click)="navigateToAddSupplier()">
+                    <i class="fa-solid fa-circle-plus" style="margin-right:8px;"></i>
+                    Add Supplier
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUPPLIER LIST -->
+      <ul *ngIf="suppliers.length > 0" class="supplier-list">
+
+        <li *ngFor="let supplier of suppliers" class="supllier-item">
+
+            <span>{{supplier.name}}</span>
+            <span>{{supplier.address}}</span>
+
+            <div class="supplier-actions">
+                <button class="edit-btn" (click)="navigateToEditSupplier(supplier.id)">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </button>
+                <button class="delete-btn" (click)="deleteSupplier(supplier.id)">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+            </div>
+        </li>
+      </ul>
+
+    <!-- Delete confirmation modal -->
+     <div class="modal-backdrop"  *ngIf="showDeleteModal">
+        <div class="modal">
+            <h4>Are you sure you want to delete this category ?</h4>
+            <div class="modal-buttons">
+                <button (click)="confirmDelete()" class="yes">Yes</button>
+                <button (click)="cancelDelete()" class="no">No</button>
+            </div>
+        </div>
+     </div>
+</div>
