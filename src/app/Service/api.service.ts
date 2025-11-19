@@ -151,9 +151,10 @@ export class ApiService {
     );
   }
 
-  listAllSuppliers() : Observable<any> {
+  listAllSuppliers(search: string) : Observable<any> {
     return this.http.get(`${environment.apiUrl}/suppliers/all`,
       {
+        params: {search},
         headers: this.getHeader()
       }
     );

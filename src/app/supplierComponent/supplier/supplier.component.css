@@ -5,7 +5,7 @@
 .supplier-header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     margin-bottom: 20px;
 }
 
@@ -27,6 +27,9 @@
      
 .supplier-header h1 {
     color: #105acaff;
+    margin-right: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .supplier-controls {
@@ -34,8 +37,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 20px;
-    flex-grow: 1;
+    flex-grow: 0.7;
 }
      
 .add-sup {
@@ -75,27 +77,34 @@
     background-color: #037c4a;
 }
 
-.search-cat {
+.search-sup {
   position: relative;
   width: 300px;
   flex-shrink: 0;
 }
 
-.search-cat input {
+.search-sup input {
   width: 100%;
   padding: 10px 40px 10px 15px; 
   border: 1px solid #ddd;
   font-size: 16px;
   outline: none;
+  border-radius: 8px;
+}
+
+.search-sup input:focus {
+    border-color: #5196fdff; 
 }
 
 .search-wrapper {
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.search-cat i {
+.search-sup i {
   position: absolute;
   right: 12px;
   top: 50%;
@@ -105,7 +114,7 @@
   font-size: 18px;
 }
 
-.search-cat i:hover {
+.search-sup i:hover {
   color: #007bff;
 }
      
@@ -114,10 +123,19 @@
     padding: 0;
     margin-top: 50px;
 }
+
+.supllier-item .name i {
+    color: #f16d2aff;
+}
+
+.supllier-item .address i {
+    color: #104477ff;
+}
      
 .supllier-item {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 18px;
     margin: 5px;
     font-size: 16px;
@@ -127,11 +145,17 @@
     color: #505050;
     font-weight: 550;
 }
+
+.supplier-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
      
 .supllier-item:hover {
     background-color: #b5d8ff;
 }
-     
+  
 .supplier-actions button {
     margin-left: 10px;
     padding: 5px 10px;

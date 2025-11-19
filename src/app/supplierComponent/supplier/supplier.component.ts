@@ -17,6 +17,7 @@ export class SupplierComponent implements OnInit{
   message: string | null = null;
   supplierToDeleteId: string | null = null;
   showDeleteModal: boolean = false;
+  searchSupplier: string = '';
 
   constructor(private apiService: ApiService, private router: Router) {}
 
@@ -26,7 +27,7 @@ export class SupplierComponent implements OnInit{
 
   getSuppliers() : void {
 
-    this.apiService.listAllSuppliers().subscribe({
+    this.apiService.listAllSuppliers(this.searchSupplier).subscribe({
       next: (response: any) => {
         if (response.status === 200) {
           this.suppliers = response.suppliers

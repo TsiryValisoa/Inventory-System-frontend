@@ -11,6 +11,16 @@
                     Add Supplier
                 </button>
             </div>
+
+            <div class="search-wrapper">
+                <div class="search-sup">
+                    <input type="text" [(ngModel)]="searchSupplier" placeholder="Search supplier">
+                    <i class="fa-solid fa-magnifying-glass" (click)="getSuppliers()" title="Search"></i>
+                </div>
+                <button (click)="searchSupplier = ''; getSuppliers()" class="refresh-btn" title="Refresh">
+                    <i class="fa-solid fa-arrow-rotate-right"></i>
+                </button>
+            </div>
         </div>
     </div>
 
@@ -19,8 +29,16 @@
 
         <li *ngFor="let supplier of suppliers" class="supllier-item">
 
-            <span>{{supplier.name}}</span>
-            <span>{{supplier.address}}</span>
+            <div class="supplier-info">
+                <span class="name">
+                    <i class="fa-solid fa-boxes-packing" style="margin-right:3px;"></i>
+                    {{supplier.name}}
+                </span>
+                <span class="address">
+                    <i class="fa-solid fa-location-dot" style="margin-right:3px;"></i>
+                    {{supplier.address}}
+                </span>
+            </div>
 
             <div class="supplier-actions">
                 <button class="edit-btn" (click)="navigateToEditSupplier(supplier.id)">
