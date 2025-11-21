@@ -1,1 +1,20 @@
-<p>pagination works!</p>
+<div class="pagination-container">
+
+    <!--- PREVIOUS BUTTON -->
+    <button [disabled]="currentPage === 1" (click)="onPageChange(currentPage - 1)">
+        <i class="fa-solid fa-angles-left"></i>
+    </button>
+
+    <!--- TOTAL PAGE BUTTON -->
+    <button 
+    *ngFor="let number of pageNumbers"
+    [class.active]="currentPage === number" 
+    (click)="onPageChange(number)">
+        {{totalPages}}
+    </button>
+
+    <!--- NEXT BUTTON -->
+    <button [disabled]="totalPages" (click)="onPageChange(currentPage + 1)">
+        <i class="fa-solid fa-angles-right"></i>
+    </button>
+</div>
