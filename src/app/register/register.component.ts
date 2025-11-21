@@ -13,8 +13,6 @@ import { firstValueFrom } from 'rxjs';
 })
 export class RegisterComponent {
 
-  constructor(private apiService: ApiService, private router: Router) {}
-
   formData: any = {
     name: '',
     email: '',
@@ -24,13 +22,15 @@ export class RegisterComponent {
 
   message: string | null = null;
 
+  constructor(private apiService: ApiService, private router: Router) {}
+
   async handleSubmit() {
     if (!this.formData.name ||
         !this.formData.email ||
         !this.formData.password ||
         !this.formData.phoneNumber
     ) {
-      this.showMessage("All fields are required!");
+      this.showMessage("All fields are required !");
       return;
     }
 
