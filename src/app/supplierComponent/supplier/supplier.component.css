@@ -22,7 +22,7 @@
 }
 
 .message.success {
-    background-color: #70b870;
+    background-color: #48ac48;
 }
      
 .supplier-header h1 {
@@ -102,6 +102,7 @@
   gap: 10px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 5px;
 }
 
 .search-sup i {

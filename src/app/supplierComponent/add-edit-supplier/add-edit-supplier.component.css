@@ -1,0 +1,116 @@
+.supplier-form-component {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    background-color: #f7f7f7;
+}
+
+h1 {
+    font-size: 28px;
+    color: #105acaff;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+}
+
+.message {
+    color: #fff;
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: center;
+    background-color: #E34234;
+}
+
+form {
+    width: 90%; 
+    max-width: 450px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.62);
+    gap: 20px;
+}
+
+.form-actions {
+    display: flex; 
+    justify-content: center; 
+    gap: 20px; 
+    width: 100%; 
+    max-width: 300px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.form-group label {
+    position: relative;
+    width: 100%;
+}
+
+.form-group input {
+    padding: 1rem 0.5rem;
+    width: 100%;
+    background-color: inherit;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #105acaff;
+    transition: all 400ms;
+    font-size: 16px;
+}
+
+.form-group input:hover {
+    background-color: #e7e7e7;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.form-group button {
+    padding: 12px 12px;
+    background-color: #105acaff;
+    font-size: 16px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.form-group span {
+    color: #105acaff;
+}
+
+button {
+    background-color: #105acaff;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s, transform 0.1s;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color:  #5e7fb1ff;
+}
+
+.cancel {
+    background-color: #f16d2aff;
+}
+
+.cancel:hover {
+    background-color: #c52435;
+}

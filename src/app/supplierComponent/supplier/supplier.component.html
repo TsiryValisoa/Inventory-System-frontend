@@ -1,5 +1,5 @@
 <div class="supplier-component">
-    <div *ngIf="message" class="message">{{message}}</div>
+    <div *ngIf="message" [ngClass]="messageType" class="message">{{message}}</div>
 
     <div class="supplier-header">
         <h1>Supplier</h1>

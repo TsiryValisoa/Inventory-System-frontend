@@ -18,6 +18,7 @@ export class SupplierComponent implements OnInit{
   supplierToDeleteId: string | null = null;
   showDeleteModal: boolean = false;
   searchSupplier: string = '';
+  messageType: 'success' | 'error' |'' = '';
 
   constructor(private apiService: ApiService, private router: Router) {}
 
@@ -60,7 +61,7 @@ export class SupplierComponent implements OnInit{
       this.apiService.deleteSupplier(this.supplierToDeleteId).subscribe({
       next: (response: any) => {
         if (response.status === 200) {
-          this.showMessage(response.message);
+          this.showMessage(response.message, 'success');
           this.getSuppliers();
         }
       },
@@ -77,9 +78,9 @@ export class SupplierComponent implements OnInit{
     this.supplierToDeleteId = null;
   }
 
-  showMessage(message: string) {
-    this.message = message;
-    //Disappear after
+  showMessage(msg: string, type: 'success' | 'error' = 'error') {
+    this.message = msg;
+    this.messageType = type;
     setTimeout(() => {
       this.message = null;
     }, 4000)

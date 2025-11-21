@@ -1,1 +1,26 @@
-<p>add-edit-supplier works!</p>
+<div class="supplier-form-component">
+
+    <p *ngIf="message" class="message">{{message}}</p>
+
+    <h1>{{isEditing ? "Edit supplier" : "Add supplier"}}</h1>
+
+    <form (ngSubmit)="handleSubmit()">
+        <div class="form-group">
+
+            <label>
+                <span>Name :</span>
+                <input [(ngModel)]="formData.name" type="text" name="name" placeholder="Enter supplier name">
+            </label>
+
+            <label>
+                <span>Address :</span>
+                <input [(ngModel)]="formData.address" type="text" name="address" placeholder="Enter supplier address">
+            </label>
+        </div>
+
+        <div class="form-actions">
+            <button>{{isEditing ? "Save" : "Add"}}</button>
+            <button class="cancel" (click)="goToSupplierList()">Cancel</button>
+        </div>
+    </form>
+</div>
