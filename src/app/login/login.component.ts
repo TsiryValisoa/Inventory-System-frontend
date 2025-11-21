@@ -13,8 +13,6 @@ import { firstValueFrom } from 'rxjs';
 })
 export class LoginComponent {
 
-  constructor(private apiService: ApiService, private router: Router) {}
-
   formData: any = {
     email: '',
     password: ''
@@ -22,11 +20,13 @@ export class LoginComponent {
 
   message: string | null = null;
 
+  constructor(private apiService: ApiService, private router: Router) {}
+
   async handleSubmit() {
     if (!this.formData.email ||
         !this.formData.password
     ) {
-      this.showMessage("All fields are required!");
+      this.showMessage("All fields are required !");
       return;
     }
 
