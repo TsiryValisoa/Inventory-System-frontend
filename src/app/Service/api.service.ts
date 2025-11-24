@@ -195,9 +195,10 @@ export class ApiService {
     );
   } 
 
-  listAllProducts() : Observable<any> {
+  listAllProducts(search: string) : Observable<any> {
     return this.http.get(`${environment.apiUrl}/products/all`,
       {
+        params: {search},
         headers: this.getHeader()
       }
     );
