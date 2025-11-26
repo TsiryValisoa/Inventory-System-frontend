@@ -43,6 +43,8 @@ export class AddEditSupplierComponent implements OnInit {
             name: response.supplier.name,
             address: response.supplier.address
           };
+        } else {
+          this.showMessage(response.message);
         }
       },
       error: (error) => {
@@ -71,7 +73,9 @@ export class AddEditSupplierComponent implements OnInit {
         next: (reponse: any) => {
           if (reponse.status === 200) {
             this.showMessage(reponse.message);
-            this.router.navigate(['/supplier'])
+            setTimeout(() => {
+              this.router.navigate(['/supplier']);
+            }, 500);
           }
         },
         error: (error) => {
@@ -83,7 +87,9 @@ export class AddEditSupplierComponent implements OnInit {
         next: (response: any) => {
           if (response.status === 200) {
             this.showMessage(response.message);
-            this.router.navigate(['/supplier']);
+            setTimeout(() => {
+              this.router.navigate(['/supplier']);
+            }, 500);
           }
         },
         error: (error) => {
