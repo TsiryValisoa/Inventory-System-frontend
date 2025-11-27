@@ -1,0 +1,199 @@
+.purchase-component {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100%;
+    background-color: #f7f7f7;
+    padding-top: 50px;
+}
+
+.message {
+    color: #fff;
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.message.error {
+    background-color: #E34234;
+}
+
+.message.success {
+    background-color: #48ac48;
+}
+
+.purchase-component h1 {
+    font-size: 28px;
+    color: #105acaff;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+}
+
+.purchase-component form {
+    width: 90%; 
+    max-width: 600px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow:  0 4px 10px rgba(0, 0, 0, 0.62);
+    gap: 20px;
+}
+
+.purchase-component .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}
+
+.purchase-component .form-group label {
+    display: block;
+    margin-bottom: 5px; /* Espacement sous le label */
+    font-weight: 500;
+    color: #105acaff;
+    font-size: 16px;
+}
+
+/* input */
+.purchase-component .form-control {
+    width: 100%;
+    padding: 1rem 0.5rem;
+    background-color: inherit;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #105acaff;
+    transition: all 400ms;
+    font-size: 16px;
+    border-radius: 0;
+    box-sizing: border-box;
+}
+/* input */
+.purchase-component .form-control:hover {
+    background-color: #e7e7e7;
+    border-radius: 0.5rem 0.5rem 0 0;
+    border: none;
+    border-bottom: 1px solid #105acaff;
+}
+
+.purchase-component .form-group select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    padding: 1rem 0.5rem;
+    width: 100%;
+    background-color: #105acaff; 
+    color: white; 
+    outline: none;
+    border-radius: 8px; 
+    transition: all 400ms;
+    font-size: 16px;
+    padding-right: 30px;
+}
+
+.purchase-component .form-group select:hover {
+    background-color: #c7c7c7;
+    color: #6b6b6b;
+}
+
+.purchase-component .form-group select option {
+    background-color: white; 
+    color: #333; 
+}
+
+.purchase-component .form-group:has(select) {
+    position: relative;
+}
+
+.purchase-component .form-group:has(select)::after {
+    content: '▼';
+    font-size: 0.8em;
+    color: white; 
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    pointer-events: none;
+    transform: translateY(calc(-50% + 15px)); 
+}
+
+.purchase-component .submit-btn {
+    padding: 12px 25px;
+    background-color: #105acaff; 
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s, transform 0.1s;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.purchase-component .submit-btn:hover {
+    background-color: #5e7fb1ff;
+}
+
+.purchase-component .submit-btn:active {
+    transform: scale(0.99);
+}
+
+.form-action {
+    display: flex; 
+    justify-content: center; 
+    gap: 20px; 
+    width: 100%; 
+    max-width: 300px;
+    margin-top: 20px;
+}
+
+.form-action button {
+    padding: 12px 18px; 
+    font-size: 16px; 
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.form-action .purchase {
+    background-color: #15b170;
+}
+
+.form-action .purchase:hover {
+    background-color: #037c4a;
+}
+
+.form-action .cancel {
+    background-color: #f16d2aff;
+}
+
+.form-action .cancel:hover {
+    background-color: #c52435;
+}
+
+@media (max-width: 600px) {
+    .purchase-component form {
+        padding: 20px;
+        gap: 15px;
+    }
+
+    .purchase-component h1 {
+        font-size: 24px;
+    }
+
+    .purchase-component .submit-btn {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}
