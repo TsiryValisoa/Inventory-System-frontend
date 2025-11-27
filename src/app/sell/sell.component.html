@@ -1,1 +1,37 @@
-<p>sell works!</p>
+<div class="sell-component">
+    <p *ngIf="message" class="message" [ngClass]="messageType">{{message}}</p>
+
+    <h1>Sell Product</h1>
+
+    <form (ngSubmit)="handleSubmit()">
+
+        <div class="form-group">
+            <label>Select Product :</label>
+            <select 
+            name="productId" 
+            class="select-control"
+            [(ngModel)]="productId"
+            >
+              <option value="">Select a product</option>
+              <option *ngFor="let product of products" [value]="product.id">{{product.name}}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Description :</label>
+            <input type="text" class="form-control" [(ngModel)]="description" name="description">
+        </div>
+
+        <div class="form-group">
+            <label>Quantity :</label>
+            <input type="text" class="form-control" [(ngModel)]="quantity" name="quantity">
+        </div>
+
+        <div class="form-action">
+            <button class="purchase">Sell</button>
+            <button class="cancel" (click)="resetForm()" type="button">Cancel</button>
+        </div>
+
+    </form>
+
+</div>
