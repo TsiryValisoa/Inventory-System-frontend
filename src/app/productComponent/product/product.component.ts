@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Product } from './product.interface';
 import { environment } from '../../../environments/environment';
 import { FormsModule } from '@angular/forms';
+import { Category } from '../../category/category.interface';
 
 @Component({
   selector: 'app-product',
@@ -24,16 +25,21 @@ export class ProductComponent implements OnInit {
   showDeleteModal: boolean = false;
   productToDeleteId: string | null = null;
   searchProduct: string = '';
+  categoryId: string = '';
+  categories: Category[] = [];
 
   constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit(): void {
     this.getProducts();
+    this.loadCategories();
   }
 
   getProducts() : void {
 
-    this.apiService.listAllProducts(this.searchProduct).subscribe({
+    const categoryIdForApi = this.categoryId === '' ? null : parseInt(this.categoryId)
+
+    this.apiService.listAllProducts(this.searchProduct, categoryIdForApi!).subscribe({
       next: (response: any) => {
 
         const products = response.products || [];
@@ -51,6 +57,19 @@ export class ProductComponent implements OnInit {
         this.showMessage(error?.error?.message || error?.messgae || "Unable to get all products" + error);
       }
     })
+  }
+
+  loadCategories(): void {
+    this.apiService.listAllCategories('').subscribe({
+      next: (response) => {
+        if (response.status === 200) {
+          this.categories = response.categories;
+        }
+      },
+      error: (error) => {
+        this.showMessage(error?.error?.message || error?.messgae || "Unable to load all categories" + error);
+      }
+    });
   }
 
   //Navigate to add product

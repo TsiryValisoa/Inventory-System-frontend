@@ -21,6 +21,7 @@ export class AddEditProductComponent implements OnInit {
   stockQuantity: number | null = null;
   categoryId: string = '';
   description: string = '';
+  expiryDate: string = '';
   imageFile: File | null = null;
   imageUrl?: string | null = null;
   isEditing: boolean = false;
@@ -65,6 +66,7 @@ export class AddEditProductComponent implements OnInit {
           this.stockQuantity = product.stockQuantity;
           this.categoryId = product.categoryId;
           this.description = product.description;
+          this.expiryDate = product.expiryDate;
           if (product.id) {
             this.imageUrl = `${environment.apiUrl}/products/image/${product.id}`;
           }
@@ -105,6 +107,9 @@ export class AddEditProductComponent implements OnInit {
     formData.append("stockQuantity", String(this.stockQuantity));
     formData.append("categoryId", this.categoryId);
     formData.append("description", this.description);
+    if (this.expiryDate) {
+      formData.append("expiryDate", this.expiryDate);
+    }
     if (this.imageFile) {
       formData.append("imageFile", this.imageFile);
     }
@@ -147,6 +152,11 @@ export class AddEditProductComponent implements OnInit {
 
   goToProductList() {
     this.router.navigate(['/product']);
+  }
+
+  onChangeClick(event: Event) : void {
+    const input = event.target as HTMLInputElement;
+    input.showPicker?.();
   }
 
   showMessage(msg: string, type: 'success' | 'error' = 'error') {

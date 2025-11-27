@@ -25,6 +25,18 @@
                     <span>Product ref :</span>
                     <input [(ngModel)]="sku" type="text" name="sku" placeholder="Enter product reference" required>
                 </label>
+
+                <label>
+                    <span>Expiration date :</span>
+                    <input 
+                    [(ngModel)]="expiryDate"
+                    type="date"
+                    name="expired"
+                    #dateInput
+                    placeholder="Expired at..."
+                    (click)="onChangeClick($event)"
+                    >
+                </label>
             </div>
 
             <label>

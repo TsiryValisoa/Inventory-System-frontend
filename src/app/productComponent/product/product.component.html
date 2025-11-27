@@ -21,6 +21,21 @@
                 <button (click)="searchProduct = ''; getProducts()" class="refresh-btn" title="Refresh">
                      <i class="fa-solid fa-arrow-rotate-right"></i>
                 </button>
+
+                <div class="select-search">
+
+                    <div class="select-icon-wrapper">
+                        <i class="fa-solid fa-bars category-icon"></i>
+                        <select [(ngModel)]="categoryId" name="categoryId" (change)="getProducts()">
+                            <option value="">Search a category</option>
+                            <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+                        </select>
+                    </div>
+
+                    <button (click)="categoryId = ''; getProducts()" class="cancel-btn" title="cancel">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -39,14 +54,15 @@
                 <p class="sku">Product ref : {{product.sku}}</p>
                 <p class="price">Price : {{product.price}}</p>
                 <p class="quantity">Quantity : {{product.stockQuantity}}</p>
+                <p *ngIf="product.expiryDate" class="expired">Expired date : {{product.expiryDate}}</p>
                 <p class="description">{{product.description}}</p>
             </div>
 
             <div class="product-actions">
-                <button class="edit-btn" (click)="editProductComponent(product.id)">
+                <button class="edit-btn" (click)="editProductComponent(product.id)" title="Edit">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </button>
-                <button class="delete-btn" (click)="deleteProduct(product.id)">
+                <button class="delete-btn" (click)="deleteProduct(product.id)" title="Delete">
                     <i class="fa-solid fa-trash"></i>
                 </button>
             </div>
@@ -63,7 +79,7 @@
         </div>
      </div>
 
-    <!-- PAGONATIOOPN COMPONETN -->
+    <!-- PAGONATIOOPN COMPONENT -->
      <app-pagination
         [currentPage]="currentPage"
         [totalPages]="totalPages"

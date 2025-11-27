@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import CryptoJs from "crypto-js";
 import { Observable } from 'rxjs';
@@ -195,13 +195,21 @@ export class ApiService {
     );
   } 
 
-  listAllProducts(search: string) : Observable<any> {
-    return this.http.get(`${environment.apiUrl}/products/all`,
-      {
-        params: {search},
-        headers: this.getHeader()
-      }
-    );
+  listAllProducts(search: string, categoryId: number | null) : Observable<any> {
+    let params = new HttpParams();
+
+    if (search) {
+        params = params.set('search', search);
+    }
+
+    if (categoryId) {
+        params = params.set('categoryId', categoryId.toString());
+    }
+
+    return this.http.get(`${environment.apiUrl}/products/all`, {
+      params: params,
+      headers: this.getHeader()
+    });
   }
 
   listProductById(id: string) : Observable<any> {

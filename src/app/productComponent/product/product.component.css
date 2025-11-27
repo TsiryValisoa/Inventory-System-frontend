@@ -8,6 +8,7 @@
     align-items: center;
     justify-content: flex-start;
     margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 .message {
@@ -82,6 +83,7 @@
   font-size: 16px;
   outline: none;
   border-radius: 8px;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .search-sup input:focus {
@@ -95,6 +97,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 5px;
+  flex-wrap: wrap;
 }
 
 .search-sup i {
@@ -110,7 +113,69 @@
 .search-sup i:hover {
   color: #007bff;
 }
-     
+
+.select-search {
+    display: flex;
+    align-items: center; 
+    gap: 10px;
+    width: fit-content;
+    margin-bottom: 0;
+}
+
+.select-icon-wrapper {
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.select-search .category-icon {
+    position: absolute;
+    left: 12px; 
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    font-size: 18px;
+    pointer-events: none;
+}
+
+.select-search .fa-bars {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%); 
+    color: #666; 
+    font-size: 18px;
+    pointer-events: none; 
+}
+
+.select-search select {
+    appearance: none; 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    padding: 10px 15px 10px 45px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-image: none;
+}
+
+.select-search select:focus {
+    border-color: #007bff;
+}
+
+.select-search button.cancel-btn {
+    background-color: #c52435;
+}
+
+.select-search button.cancel-btn:hover {
+    background-color: #880606;
+}
+    
 .product-image {
     width: 100%;
     height: 130px;
@@ -148,6 +213,10 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between;
+    height: 100%;
      
 }
      
@@ -173,7 +242,8 @@
      
 .product-info .sku,
 .product-info .price,
-.product-info .quantity { 
+.product-info .quantity,
+.product-info .expired{ 
     color: #777;
     font-size: 0.9rem;
     margin-bottom: 5px;

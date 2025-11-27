@@ -7,4 +7,5 @@ export interface Product {
     stockQuantity: number;
     categoryId: string;
     description: string;
+    expiryDate?: string;
 }
