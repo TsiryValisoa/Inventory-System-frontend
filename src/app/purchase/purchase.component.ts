@@ -91,7 +91,7 @@ export class PurchaseComponent implements OnInit {
         }
       },
       error: (error) => {
-        this.showMessage(error?.error?.message || error?.messgae || "Unable to restrock inventory" + error);
+        this.showMessage(error?.error?.message || error?.messgae || "Unable to restock inventory" + error);
       }
     });
   }
