@@ -58,13 +58,12 @@
 
 .purchase-component .form-group label {
     display: block;
-    margin-bottom: 5px; /* Espacement sous le label */
+    margin-bottom: 5px;
     font-weight: 500;
     color: #105acaff;
     font-size: 16px;
 }
 
-/* input */
 .purchase-component .form-control {
     width: 100%;
     padding: 1rem 0.5rem;
@@ -77,7 +76,7 @@
     border-radius: 0;
     box-sizing: border-box;
 }
-/* input */
+
 .purchase-component .form-control:hover {
     background-color: #e7e7e7;
     border-radius: 0.5rem 0.5rem 0 0;

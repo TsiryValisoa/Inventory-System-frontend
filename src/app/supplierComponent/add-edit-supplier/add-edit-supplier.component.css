@@ -75,8 +75,9 @@ form {
 
 .form-group input:hover {
     background-color: #e7e7e7;
+    border-radius: 0.5rem 0.5rem 0 0;
     border: none;
-    border-radius: 0.5rem;
+    border-bottom: 1px solid #105acaff;
 }
 
 .form-group button {
@@ -92,6 +93,8 @@ form {
 
 .form-group span {
     color: #105acaff;
+    margin-bottom: 10px;
+    display: block;
 }
 
 button {
