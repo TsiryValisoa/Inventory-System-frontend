@@ -1,7 +1,7 @@
 <div class="pagination-container">
 
     <!--- PREVIOUS BUTTON -->
-    <button [disabled]="currentPage === 1" (click)="onPageChange(currentPage - 1)">
+    <button [disabled]="currentPage === totalPages" (click)="onPageChange(currentPage - 1)">
         <i class="fa-solid fa-angles-left"></i>
     </button>
 
@@ -10,11 +10,11 @@
     *ngFor="let number of pageNumbers"
     [class.active]="currentPage === number" 
     (click)="onPageChange(number)">
-        {{totalPages}}
+        {{number}}
     </button>
 
     <!--- NEXT BUTTON -->
-    <button [disabled]="totalPages" (click)="onPageChange(currentPage + 1)">
+    <button [disabled]="currentPage === totalPages" (click)="onPageChange(currentPage + 1)">
         <i class="fa-solid fa-angles-right"></i>
     </button>
 </div>
