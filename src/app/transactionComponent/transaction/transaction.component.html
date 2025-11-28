@@ -1,1 +1,72 @@
-<p>transaction works!</p>
+<div class="transaction-component">
+
+    <!-- TRANSCATIONS HEADER -->
+     <div class="transactions-header">
+
+        <h1>Transaction</h1>
+
+        <div class="transaction-controls">
+            <div class="search-wrapper">
+                <div class="search-sup">
+                    <input type="text" [(ngModel)]="search" placeholder="Search transaction...">
+                    <i class="fa-solid fa-magnifying-glass" (click)="handleSearch()" title="Search"></i>
+                </div>
+                <button (click)="search = ''; handleSearch()" class="refresh-btn" title="Refresh">
+                        <i class="fa-solid fa-arrow-rotate-right"></i>
+                </button>
+            </div>
+
+            <div class="select-search">
+                <div class="select-icon-wrapper">
+                    <i class="fa-solid fa-bars status-icon"></i>
+                    <select [(ngModel)]="searchStatus" name="status" (change)="handleSearch()">
+                        <option value="">Search by status</option>
+                        <option *ngFor="let status of statusList" [value]="status">{{status}}</option>
+                    </select>
+                </div>
+
+                <button (click)="searchStatus = ''; handleSearch()" class="cancel-btn" title="cancel">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                </button>
+            </div>
+        </div>
+      </div>
+
+     <!-- TRANSCATIONS TABLE -->
+      <div *ngIf="transactions.length > 0">
+        <table class="transactions-table">
+            <thead>
+                <tr>
+                    <th>TYPE</th>
+                    <th>STATUS</th>
+                    <th>TOTAL PRICE (MGA)</th>
+                    <th>TOTAL PRODUCTS</th>
+                    <th>DESCRIPTION</th>
+                    <th>DATE</th>
+                    <th>ACTIONS</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let transaction of transactions">
+                    <td>{{transaction.transactionType}}</td>
+                    <td>{{transaction.status}}</td>
+                    <td>{{transaction.totalPrice}}</td>
+                    <td>{{transaction.totalProducts}}</td>
+                    <td>{{transaction.description}}</td>
+                    <td>{{transaction.createdAt | date : "short"}}</td>
+                    <td (click)="navigateToTransactionDetails(transaction.id)">
+                        <button>View details</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+
+      <!-- PAGONATIOOPN COMPONENT -->
+       <app-pagination
+       [currentPage]="currentPage"
+       [totalPages]="totalPages"
+       (pageChange)="onPageChange($event)">
+       </app-pagination>
+</div>

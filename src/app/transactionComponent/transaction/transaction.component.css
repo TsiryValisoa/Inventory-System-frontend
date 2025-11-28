@@ -1,0 +1,235 @@
+.transaction-component {
+    padding: 20px;
+    background-color: #f3f4f6;
+}
+
+h1{
+    color: #105acaff;
+    margin-right: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+     
+.transactions-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.transaction-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 0.7;
+}
+
+.search-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 0;
+    margin-right: 15px;
+}
+     
+.search-sup {
+    position: relative;
+    max-width: 300px; 
+    width: 100%;
+    flex-grow: 1; 
+    flex-shrink: 1;
+}
+
+.search-sup input {
+    width: 100%;
+    padding: 10px 40px 10px 15px; 
+    border: 1px solid #ddd;
+    font-size: 16px;
+    outline: none;
+    border-radius: 8px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.search-sup input:focus {
+    border-color: #5196fdff; 
+}
+
+.search-sup i {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #888;
+    font-size: 18px;
+}
+
+.search-sup i:hover {
+  color: #007bff;
+}
+
+.select-search {
+    display: flex;
+    align-items: center; 
+    gap: 10px;
+    width: fit-content;
+    margin-bottom: 0;
+}
+
+.select-icon-wrapper {
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.select-search .status-icon {
+    position: absolute;
+    left: 12px; 
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    font-size: 18px;
+    pointer-events: none;
+}
+
+.select-search .fa-bars {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%); 
+    color: #666; 
+    font-size: 18px;
+    pointer-events: none; 
+}
+
+.select-search select {
+    appearance: none; 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    padding: 10px 15px 10px 45px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-image: none;
+}
+
+.select-search select:focus {
+    border-color: #007bff;
+}
+
+.select-search button.cancel-btn {
+    background-color: #c52435;
+}
+
+.select-search button.cancel-btn:hover {
+    background-color: #880606;
+}
+
+.transactions-header button.refresh-btn {
+    background-color: #15b170;
+}
+
+.transactions-header button.refresh-btn:hover {
+    background-color: #037c4a;
+}
+
+.transactions-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: rgb(212, 212, 212);
+}
+     
+.transactions-table th,
+.transactions-table td {
+    padding: 15px;
+    text-align: left;
+    border: none;
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
+}
+     
+.transactions-table th {
+    background-color: #105acaff;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+     
+.transactions-table thead tr th:first-child {
+    border-top-left-radius: 8px;
+}
+
+.transactions-table thead tr th:last-child {
+    border-top-right-radius: 8px;
+}
+
+.transactions-table tbody tr {
+    border-bottom: 1px solid #e2e8f0;
+    transition: background-color 0.2s ease;
+}
+
+.transactions-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.transactions-table tbody tr:hover {
+    background-color: #b5d8ff;
+}
+
+.transactions-table td:last-child {
+    cursor: pointer;
+}
+
+.transactions-table td button {
+    background-color: #f16d2aff;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s;
+}
+
+.transactions-table td button:hover {
+    background-color: rgb(206, 55, 18);
+}
+
+@media (max-width: 900px) {
+    .transactions-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .transaction-controls {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+    .search-wrapper, .select-search {
+        width: 100%;
+        margin-right: 0;
+    }
+    .search-sup, .select-icon-wrapper {
+        flex-grow: 1;
+    }
+    .search-sup input, .select-search select {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+    
