@@ -1,0 +1,158 @@
+.transaction-details-component {
+    max-width: 850px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+h2 {
+    color: #105acaff;
+    margin-bottom: 15px;
+}
+
+.message {
+    color: #fff;
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.message.error {
+    background-color: #E34234;
+}
+
+.message.success {
+    background-color: #48ac48;
+}
+
+.section-card {
+  background: #fff;
+  padding: 18px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.62);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.section-card .created,
+.section-card .updated {
+    color: rgb(134, 134, 134);
+}
+
+.section-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.62);
+}
+
+.section-card p {
+  margin: 6px 0;
+  line-height: 1.4;
+}
+
+.section-card img {
+  margin-top: 12px;
+  max-width: 170px;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+}
+
+.update-card {
+    background: #c9c9c9;
+    display: flex;
+    align-items: center; 
+    gap: 15px;
+    width: fit-content;
+    margin-bottom: 20px; 
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.update-card .select-icon-wrapper {
+    position: relative;
+    display: flex; 
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.update-card .select-icon-wrapper label {
+    font-weight: 500;
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+.update-card .status-icon {
+    position: absolute;
+    left: 85px; 
+    top: 50%;
+    transform: translateY(-50%); 
+    color: #666; 
+    font-size: 18px;
+    pointer-events: none;
+}
+
+.update-card .select-icon-wrapper select {
+    appearance: none; 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    padding: 10px 15px 10px 45px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-image: none;
+    min-width: 150px;
+}
+
+.update-card .select-icon-wrapper select:focus {
+    border-color: #007bff;
+}
+
+.update-card .update {
+    padding: 11px;
+    background: #15b170;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.update-card .cancel {
+    padding: 11px;
+    background: #f16d2aff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.update-card .update:hover {
+  background: #037c4a;
+}
+
+.update-card .cancel:hover {
+  background: #c52435;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.grid-container .empty-card {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+}

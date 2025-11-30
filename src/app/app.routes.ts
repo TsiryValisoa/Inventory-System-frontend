@@ -32,7 +32,7 @@ export const routes: Routes = [
     { path: 'purchase', component: PurchaseComponent, canActivate: [GuardService] },
     { path: 'sell', component: SellComponent, canActivate: [GuardService] },
     { path: 'transaction', component: TransactionComponent, canActivate: [GuardService] },
-    { path: 'trasaction/:transactionId', component: TransactionDetailsComponent, canActivate: [GuardService] },
+    { path: 'transaction/:transactionId', component: TransactionDetailsComponent, canActivate: [GuardService] },
 
     { path: 'profile', component: ProfileComponent, canActivate: [GuardService] },
     { path: 'dashboard', component: DashboardComponent, canActivate: [GuardService] },

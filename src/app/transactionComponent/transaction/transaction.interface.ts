@@ -1,3 +1,7 @@
+import { Product } from "../../productComponent/product/product.interface";
+import { User } from "../../profile/user.interface";
+import { Supplier } from "../../supplierComponent/supplier/supplier.interface";
+
 export interface Transaction {
     id: string;
     productId: string;
@@ -9,4 +13,8 @@ export interface Transaction {
     totalPrice: number;
     totalProducts: number;
     createdAt: string;
+    updatedAt: string;
+    product: Product;
+    user: User;
+    supplier: Supplier;
 }

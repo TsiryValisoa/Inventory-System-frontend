@@ -1,1 +1,69 @@
-<p>transaction-details works!</p>
+<div class="transaction-details-component">
+
+    <p *ngIf="message" class="message" [ngClass]="messageType">{{message}}</p>
+
+    <div *ngIf="transaction" class="grid-container">
+
+        <!-- Transaction Information -->
+         <div class="section-card">
+            <h2>Transaction Information :</h2>
+            <p>TYPE : {{transaction.transactionType}}</p>
+            <p>STATUS : {{transaction.status}}</p>
+            <p>DESCRIPTION : {{transaction.description}}</p>
+            <p>TOTAL PRODUCTS : {{transaction.totalProducts}}</p>
+            <p>TOATL PRICE: {{transaction.totalPrice}}</p>
+            <p class="created">Created at: {{transaction.createdAt | date:'short'}}</p>
+
+            <div *ngIf="transaction.updatedAt" class="updated">
+                <p>Updated at: {{transaction.createdAt | date:'short'}}</p>
+            </div>
+         </div>
+
+        <!-- Product Information -->
+         <div class="section-card">
+            <h2>Product Information :</h2>
+            <p>NAME : {{transaction.product.name}}</p>
+            <p>PRODUCT REF : {{transaction.product.sku}}</p>
+            <p>PRICE : {{transaction.product.price}}</p>
+            <p>QUANTITY : {{transaction.product.stockQuantity}}</p>
+            <p *ngIf="transaction.product.description">DESCRIPTION :  {{transaction.product.description}}</p>
+
+            <div *ngIf="transaction.product.imageUrl">
+                <img [src]="imageUrl" alt="preview">
+            </div>
+         </div>
+
+        <!-- User associated -->
+         <div class="section-card">
+            <h2>User Information :</h2>
+            <p>NAME : {{transaction.user.name}}</p>
+            <p>E-MAIL : {{transaction.user.email}}</p>
+            <p>PHONE NUMBER : {{transaction.user.phoneNumber}}</p>
+            <p>ROLE : {{transaction.user.role}}</p>
+         </div>
+
+        <!-- Supplier Information -->
+         <div 
+         *ngIf="transaction.supplier"
+         class="section-card"
+         >
+            <h2>Supplier Information :</h2>
+            <p>NAME : {{transaction.supplier.name}}</p>
+            <p>ADDRESS : {{transaction.supplier.address}}</p>
+         </div>
+
+        <!-- UPDATE -->
+         <div class="update-card">
+            <div class="select-icon-wrapper">
+                <label>STATUS : </label>
+                <i class="fa-solid fa-bars status-icon"></i>
+                <select [(ngModel)]="status">
+                    <option *ngFor="let status of statusList" [value]="status">{{status}}</option>
+                </select>
+            </div>
+
+            <button (click)="updateTransaction()" class="update">Update</button>
+            <button (click)="goToTransaxtionList()" class="cancel">Cancel</button>
+         </div>
+    </div>
+</div>
