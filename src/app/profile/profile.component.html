@@ -1,1 +1,42 @@
-<p>profile works!</p>
+<div class="profile-component">
+
+    <p *ngIf="message" class="message" [ngClass]="messageType">{{message}}</p>
+
+    <form action="">
+
+        <div *ngIf="user" class="profile-card">
+            <h1>Hello, {{user.name}} 👋</h1>
+
+            <label>
+                <span>Name :</span>
+                <input [(ngModel)]="user.name" type="text"  name="name" placeholder="Enter your name" required>
+            </label>
+
+            <label>
+                <span>Email :</span>
+                <input [(ngModel)]="user.email" type="text"  name="email" placeholder="Enter your email" required>
+            </label>
+
+            <label>
+                <span>Phone number :</span>
+                <input [(ngModel)]="user.phoneNumber" type="text"  name="phoneNumber" placeholder="Enter your phone number" required>
+            </label>
+
+            <label>
+                <span>Password :</span>
+                <input [(ngModel)]="user.password" type="password"  name="password" placeholder="Password is requiered if you edit your profile" required>
+            </label>
+
+            <label>
+                <span>Role : {{user.role}}</span>
+            </label>
+        </div>
+
+        <div class="update-card">
+            <button (click)="updateUserInfo()" class="update">Save edit</button>
+            <button (click)=" getUserInfo()" class="refresh" title="refresh">
+                <i class="fa-solid fa-arrow-rotate-right"></i>
+            </button>
+        </div>
+    </form>
+</div>

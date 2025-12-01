@@ -1,0 +1,130 @@
+.profile-component {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100%;
+    background-color: #f7f7f7;
+    padding-top: 30px;
+}
+
+h1 {
+    font-size: 28px;
+    color: #105acaff;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-align: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.message {
+    color: #fff;
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.message.error {
+    background-color: #E34234;
+}
+
+.message.success {
+    background-color: #48ac48;
+}
+
+form {
+    width: 90%; 
+    max-width: 600px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.62);
+    gap: 20px;
+}
+
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.profile-card label {
+    position: relative;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.profile-card input {
+    padding: 1rem 0.5rem;
+    width: 100%;
+    background-color: inherit;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #105acaff;
+    transition: all 400ms;
+    font-size: 16px;
+}
+
+.profile-card input:hover {
+    background-color: #e7e7e7;
+    border-radius: 0.5rem 0.5rem 0 0;
+    border: none;
+    border-bottom: 1px solid #105acaff;
+}
+
+.profile-card button {
+    padding: 12px 12px;
+    background-color: #105acaff;
+    font-size: 16px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.profile-card span {
+    color: #105acaff;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.update-card {
+    display: flex;
+    align-items: center; 
+    gap: 15px;
+    width: fit-content;
+}
+
+.update-card .update {
+    padding: 11px;
+    background: #105acaff;;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.update-card .update:hover {
+  background: #5e7fb1ff;
+}
+
+.update-card .refresh {
+    padding: 11px;
+    background: #15b170;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.update-card .refresh:hover {
+  background: #037c4a;
+}
