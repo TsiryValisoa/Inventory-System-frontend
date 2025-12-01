@@ -20,7 +20,6 @@
                 <option *ngFor="let year of years" [value]="year">{{year}}</option>
             </select>
         </div>
-        <i class="fa-solid fa-bars status-icon-year"></i>
 
         <button (click)="loadMonthlyData()">Show monthly data</button>
         <button (click)="month = ''; year = ''; getTransactions()" class="refresh-btn" title="Refresh">
