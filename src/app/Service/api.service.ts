@@ -265,13 +265,18 @@ export class ApiService {
     );
   }
 
-  listAllTransactions(page: number, size: number, searchText: string) : Observable<any> {
-    return this.http.get(`${environment.apiUrl}/transactions/all`,
-      {
-        params: { page: page, searchText: searchText, size: size},
-        headers : this.getHeader()
-      }
-    );
+  listAllTransactions(page?: number, size?: number, searchText?: string) : Observable<any> {
+    
+    let params: any = {};
+
+    if (page !== undefined) params.page = page;
+    if (size !== undefined) params.size = size;
+    if (searchText) params.searchText = searchText;
+
+    return this.http.get(`${environment.apiUrl}/transactions/all`, {
+      params,
+      headers: this.getHeader()
+    });
   }
 
   listTransactionById(id: string) : Observable<any> {
