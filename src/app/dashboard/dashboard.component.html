@@ -28,7 +28,7 @@
     </div>
 
     <!-- Transaction Type Count Bar Chart -->
-     <div>
+     <div class="chart-wrapper">
         <h2>Transaction counts by type</h2>
         <ngx-charts-bar-vertical
             [view]="view"
@@ -40,14 +40,14 @@
             [legend]="showLegend"
             [showXAxisLabel]="true"
             [showYAxisLabel]="true"
-            xAxisLabel="Transaction Type"
+            xAxisLabel="Transaction type"
             yAxisLabel="Count"
             [animations]="animations">
         </ngx-charts-bar-vertical>
      </div>
 
      <!-- Transaction Amount by Type Pie Chart -->
-      <div>
+      <div class="chart-wrapper">
         <h2>Total transaction amount by type</h2>
         <ngx-charts-pie-chart
             [view]="view"
@@ -61,7 +61,7 @@
       </div>
 
       <!-- Monthly Transaction Bar Chart -->
-       <div>
+       <div class="chart-wrapper">
          <h2>Monthly transaction chart</h2>
          <ngx-charts-bar-vertical
             [view]="view"
@@ -73,8 +73,8 @@
             [legend]="showLegend"
             [showXAxisLabel]="true"
             [showYAxisLabel]="true"
-            xAxisLabel="Day of Month"
-            yAxisLabel="Total Price"
+            xAxisLabel="Day of month"
+            yAxisLabel="Total price"
             [animations]="animations">
         </ngx-charts-bar-vertical>
        </div>

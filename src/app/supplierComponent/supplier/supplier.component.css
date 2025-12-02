@@ -1,5 +1,6 @@
 .supplier-component {
     padding: 20px;
+    background-color: #f3f4f6;
 }
      
 .supplier-header {
@@ -140,11 +141,12 @@
     padding: 18px;
     margin: 5px;
     font-size: 16px;
-    background-color: #f0efef;
+    background-color: white;
     border-bottom: 1px solid #eee;
     border-radius: 10px;
     color: #505050;
     font-weight: 550;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .supplier-info {

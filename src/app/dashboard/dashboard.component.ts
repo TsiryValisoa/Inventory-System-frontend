@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { Transaction } from '../transactionComponent/transaction/transaction.interface';
@@ -7,7 +7,6 @@ import { ApiService } from '../Service/api.service';
 
 @Component({
   selector: 'app-dashboard',
-  standalone: true,
   imports: [CommonModule, FormsModule, NgxChartsModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
@@ -41,12 +40,12 @@ export class DashboardComponent implements OnInit {
   year: string = '';
 
   //Chart view dimensions, legend, and animations settings
-  view: [number, number] = [700, 400];
+  view: [number, number] = [500, 300];
   showLegend: boolean = true;
   showLabels: boolean = true;
   animations: boolean = true;
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private elRef: ElementRef) {}
 
   ngOnInit(): void {
     this.getTransactions();
