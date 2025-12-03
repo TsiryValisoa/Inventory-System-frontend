@@ -5,4 +5,5 @@ export interface User {
     phoneNumber: string;
     role: string;
     password: string;
+    createdAt: string;
 }

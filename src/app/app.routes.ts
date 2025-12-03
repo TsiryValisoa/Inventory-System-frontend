@@ -11,8 +11,9 @@ import { PurchaseComponent } from './purchase/purchase.component';
 import { SellComponent } from './sell/sell.component';
 import { TransactionComponent } from './transactionComponent/transaction/transaction.component';
 import { TransactionDetailsComponent } from './transactionComponent/transaction-details/transaction-details.component';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent } from './profileComponent/profile/profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { UsersListComponent } from './profileComponent/users-list/users-list.component';
 
 export const routes: Routes = [
 
@@ -35,6 +36,7 @@ export const routes: Routes = [
     { path: 'transaction/:transactionId', component: TransactionDetailsComponent, canActivate: [GuardService] },
 
     { path: 'profile', component: ProfileComponent, canActivate: [GuardService] },
+    { path: 'user-list', component: UsersListComponent, canActivate: [GuardService] },
     { path: 'dashboard', component: DashboardComponent, canActivate: [GuardService] },
 
     { 

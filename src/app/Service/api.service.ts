@@ -59,12 +59,18 @@ export class ApiService {
     return this.http.post(`${environment.apiUrl}/auth/login`, body);
   }
 
-  getAllUser() : Observable<any> {
-    return this.http.get(`${environment.apiUrl}/users/all`,
-      {
-        headers: this.getHeader()
-      }
-    );
+  getAllUser(page?: number, size?: number, search?: string) : Observable<any> {
+    
+    let params: any = {};
+
+    if (page !== undefined) params.page = page;
+    if (size !== undefined) params.size = size;
+    if (search) params.search = search;
+
+    return this.http.get(`${environment.apiUrl}/users/all`, {
+      params,
+      headers: this.getHeader()
+    });
   }
 
   getLoggedInUserInfo() : Observable<any> {

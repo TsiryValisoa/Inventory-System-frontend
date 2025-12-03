@@ -2,7 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { User } from './user.interface';
-import { ApiService } from '../Service/api.service';
+import { ApiService } from '../../Service/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -17,7 +18,7 @@ export class ProfileComponent implements OnInit {
   messageType: 'success' | 'error' |'' = '';
   userId: string | null = '';
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit(): void {
     this.getUserInfo();
@@ -54,6 +55,10 @@ export class ProfileComponent implements OnInit {
         this.showMessage(error?.error?.message || error?.messgae || "Unable to update user" + error);
       }
     });
+  }
+
+  navigateToUserList() : void {
+    this.router.navigate(['/user-list']);
   }
 
   showMessage(msg: string, type: 'success' | 'error' = 'error') {

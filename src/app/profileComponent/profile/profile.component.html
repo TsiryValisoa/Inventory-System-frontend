@@ -2,6 +2,11 @@
 
     <p *ngIf="message" class="message" [ngClass]="messageType">{{message}}</p>
 
+    <header>
+        <h1>Welcome to your profile</h1>
+        <button (click)="navigateToUserList()"><i class="fa-solid fa-eye" style="margin-right:8px;"></i>View all users</button>
+    </header>
+
     <form action="">
 
         <div *ngIf="user" class="profile-card">

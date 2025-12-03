@@ -1,5 +1,5 @@
 import { Product } from "../../productComponent/product/product.interface";
-import { User } from "../../profile/user.interface";
+import { User } from "../../profileComponent/profile/user.interface";
 import { Supplier } from "../../supplierComponent/supplier/supplier.interface";
 
 export interface Transaction {
@@ -15,6 +15,6 @@ export interface Transaction {
     createdAt: string;
     updatedAt: string;
     product: Product;
-    user: User;
+    user: User
     supplier: Supplier;
 }

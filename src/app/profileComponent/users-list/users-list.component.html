@@ -1,0 +1,97 @@
+<div class="user-list-component">
+
+    <div *ngIf="message" class="message" [ngClass]="messageType">{{message}}</div>
+
+    <header>
+        <h1>All users</h1>
+
+        <div class="user-controls">
+
+            <div class="add-user">
+                <button class="add-user-btn">
+                    <i class="fa-solid fa-circle-plus" style="margin-right:8px;"></i>
+                    Add new ADMIN
+                </button>
+            </div>
+
+            <div class="search-wrapper">
+                <div class="search-sup">
+                    <input type="text" [(ngModel)]="search" placeholder="Search user...">
+                    <i class="fa-solid fa-magnifying-glass" (click)="handleSearch()" title="Search"></i>
+                </div>
+                <button (click)="search = ''; handleSearch()" class="refresh-btn" title="Refresh">
+                    <i class="fa-solid fa-arrow-rotate-right"></i>
+                </button>
+
+                <div class="select-search">
+                    <div class="select-icon-wrapper">
+                        <i class="fa-solid fa-bars status-icon"></i>
+                        <select [(ngModel)]="searchStatus" name="status" (change)="handleSearch()">
+                            <option value="">Search by status</option>
+                            <option *ngFor="let status of statusList" [value]="status">{{status}}</option>
+                        </select>
+                    </div>
+
+                    <button (click)="searchStatus = ''; handleSearch()" class="cancel-btn" title="cancel">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="user-list" *ngIf="users.length > 0">
+
+        <div class="user-item" *ngFor="let user of users">
+
+            <div class="user-info">
+                <div class="info-line">
+                    <span>Name :</span>
+                    <p>{{user.name}}</p>
+                </div>
+
+                <div class="info-line">
+                    <span>Email :</span>
+                    <p>{{user.email}}</p>
+                </div>
+
+                <div class="info-line">
+                    <span>Phone number :</span>
+                    <p>{{user.phoneNumber}}</p>
+                </div>
+
+                <div class="info-line">
+                    <span>Role :</span>
+                    <p>{{user.role}}</p>
+                </div>
+
+                <div class="info-line-date">
+                    <span>created at :</span>
+                    <p>{{user.createdAt | date}}</p>
+                </div>
+            </div>
+
+            <div class="user-action">
+                <button title="Disable" class="disable-btn"><i class="fa-solid fa-box-archive"></i></button>
+                <button (click)="deleteUser(user.id)" title="Delete" class="delete-btn"><i class="fa-solid fa-trash"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-backdrop"  *ngIf="showDeleteModal">
+        <div class="modal">
+            <h4>Are you sure you want to delete this category ?</h4>
+            <div class="modal-buttons">
+                <button (click)="confirmDelete()" class="yes">Yes</button>
+                <button (click)="cancelDelete()" class="no">No</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGONATIOOPN COMPONENT -->
+    <app-pagination
+       [currentPage]="currentPage"
+       [totalPages]="totalPages"
+       (pageChange)="onPageChange($event)">
+    </app-pagination>
+</div>
