@@ -7,28 +7,73 @@
         <!-- Transaction Information -->
          <div class="section-card">
             <h2>Transaction Information :</h2>
-            <p>TYPE : {{transaction.transactionType}}</p>
-            <p>STATUS : {{transaction.status}}</p>
-            <p>DESCRIPTION : {{transaction.description}}</p>
-            <p>TOTAL PRODUCTS : {{transaction.totalProducts}}</p>
-            <p>TOATL PRICE: {{transaction.totalPrice}}</p>
-            <p class="created">Created at: {{transaction.createdAt | date:'short'}}</p>
 
-            <div *ngIf="transaction.updatedAt" class="updated">
-                <p>Updated at: {{transaction.createdAt | date:'short'}}</p>
+            <div class="info-line">
+                <span>Type :</span>
+                <p>{{transaction.transactionType}}</p>
+            </div>
+
+            <div class="info-line">
+                <span>Status :</span>
+                <p>{{transaction.status}}</p>
+            </div>
+
+            <div class="info-line">
+                <span>Description :</span>
+                <p>{{transaction.description}}</p>
+            </div>
+            
+            <div class="info-line">
+                <span>Total product :</span>
+                <p>{{transaction.totalProducts}}</p>
+            </div>
+
+            <div class="info-line">
+                <span>Total price :</span>
+                <p>{{transaction.totalPrice}}</p>
+            </div>
+
+            <div class="info-line-date">
+                <span>Created at :</span>
+                <p>{{transaction.createdAt | date:'short'}}</p>
+            </div>
+
+            <div *ngIf="transaction.updatedAt" class="info-line-date">
+                <span>Updated at :</span>
+                <p>{{transaction.updatedAt | date:'short'}}</p>
             </div>
          </div>
 
         <!-- Product Information -->
          <div class="section-card">
             <h2>Product Information :</h2>
-            <p>NAME : {{transaction.product.name}}</p>
-            <p>PRODUCT REF : {{transaction.product.sku}}</p>
-            <p>PRICE : {{transaction.product.price}}</p>
-            <p>QUANTITY : {{transaction.product.stockQuantity}}</p>
-            <p *ngIf="transaction.product.description">DESCRIPTION :  {{transaction.product.description}}</p>
 
-            <div *ngIf="transaction.product.imageUrl">
+            <div class="info-line">
+                <span>Name :</span>
+                <p>{{transaction.product.name}}</p>
+            </div>
+
+            <div class="info-line">
+                <span>Product ref :</span>
+                <p>{{transaction.product.sku}}</p>
+            </div>
+
+            <div class="info-line">
+                <span>Price :</span>
+                <p>{{transaction.product.price}}</p>
+            </div>
+
+            <div class="info-line">
+                <span>Quantity :</span>
+                <p>{{transaction.product.stockQuantity}}</p>
+            </div>
+
+            <div *ngIf="transaction.product.description" class="info-line">
+                <span>Description :</span>
+                <p>{{transaction.product.description}}</p>
+            </div>
+
+            <div *ngIf="transaction.product.imageUrl" class="info-line">
                 <img [src]="imageUrl" alt="preview">
             </div>
          </div>
@@ -36,10 +81,26 @@
         <!-- User associated -->
          <div class="section-card">
             <h2>User Information :</h2>
-            <p>NAME : {{transaction.user.name}}</p>
-            <p>E-MAIL : {{transaction.user.email}}</p>
-            <p>PHONE NUMBER : {{transaction.user.phoneNumber}}</p>
-            <p>ROLE : {{transaction.user.role}}</p>
+
+            <div class="info-line">
+                <span>Name :</span>
+                <p>{{transaction.user.name}}</p>
+            </div>
+
+            <div class="info-line">
+                <span>Email :</span>
+                <p>{{transaction.user.email}}</p>
+            </div>
+
+            <div class="info-line">
+                <span>Phone number :</span>
+                <p>{{transaction.user.phoneNumber}}</p>
+            </div>
+
+            <div class="info-line">
+                <span>Role :</span>
+                <p>{{transaction.user.role}}</p>
+            </div>
          </div>
 
         <!-- Supplier Information -->
@@ -48,8 +109,17 @@
          class="section-card"
          >
             <h2>Supplier Information :</h2>
-            <p>NAME : {{transaction.supplier.name}}</p>
-            <p>ADDRESS : {{transaction.supplier.address}}</p>
+
+            <div class="info-line">
+                <span>Name :</span>
+                <p>{{transaction.supplier.name}}</p>
+            </div>
+
+            <div class="info-line">
+                <span>Address :</span>
+                <p>{{transaction.supplier.address}}</p>
+            </div>
+
          </div>
 
         <!-- UPDATE -->

@@ -16,9 +16,9 @@
             <div class="search-wrapper">
                 <div class="search-sup">
                     <input type="text" [(ngModel)]="searchProduct" placeholder="Search product">
-                    <i class="fa-solid fa-magnifying-glass" (click)="getProducts()" title="Search"></i>
+                    <i class="fa-solid fa-magnifying-glass" (click)="handleSearch()" title="Search"></i>
                 </div>
-                <button (click)="searchProduct = ''; getProducts()" class="refresh-btn" title="Refresh">
+                <button (click)="searchProduct = ''; handleSearch()" class="refresh-btn" title="Refresh">
                      <i class="fa-solid fa-arrow-rotate-right"></i>
                 </button>
 
@@ -26,13 +26,13 @@
 
                     <div class="select-icon-wrapper">
                         <i class="fa-solid fa-bars category-icon"></i>
-                        <select [(ngModel)]="categoryId" name="categoryId" (change)="getProducts()">
+                        <select [(ngModel)]="categoryId" name="categoryId" (change)="handleSearch()">
                             <option value="">Search a category</option>
                             <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
                         </select>
                     </div>
 
-                    <button (click)="categoryId = ''; getProducts()" class="cancel-btn" title="cancel">
+                    <button (click)="categoryId = ''; handleSearch()" class="cancel-btn" title="cancel">
                         <i class="fa-solid fa-circle-xmark"></i>
                     </button>
                 </div>
@@ -51,10 +51,27 @@
 
             <div class="product-info">
                 <h3 class="name">{{product.name}}</h3>
-                <p class="sku">Product ref : {{product.sku}}</p>
-                <p class="price">Price : {{product.price}}</p>
-                <p class="quantity">Quantity : {{product.stockQuantity}}</p>
-                <p *ngIf="product.expiryDate" class="expired">Expired date : {{product.expiryDate}}</p>
+
+                <div class="info-line">
+                    <span>Product ref :</span>
+                    <p>{{product.sku}}</p>
+                </div>
+
+                <div class="info-line">
+                    <span>Price :</span>
+                    <p>{{product.price}}</p>
+                </div>
+
+                <div class="info-line">
+                    <span>Quantity :</span>
+                    <p>{{product.stockQuantity}}</p>
+                </div>
+
+                <div *ngIf="product.expiryDate" class="info-line-date">
+                    <span>Expired date :</span>
+                    <p>{{product.expiryDate}}</p>
+                </div>
+                
                 <p class="description">{{product.description}}</p>
             </div>
 

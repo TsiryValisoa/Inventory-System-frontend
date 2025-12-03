@@ -26,11 +26,15 @@ h2 {
 }
 
 .section-card {
-  background: #fff;
-  padding: 18px 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.62);
-  transition: transform .2s ease, box-shadow .2s ease;
+    background: #fff;
+    padding: 18px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.62);
+    transition: transform .2s ease, box-shadow .2s ease;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 .section-card .created,
 .section-card .updated {
@@ -42,16 +46,33 @@ h2 {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.62);
 }
 
-.section-card p {
-  margin: 6px 0;
-  line-height: 1.4;
-}
-
 .section-card img {
   margin-top: 12px;
   max-width: 170px;
   border-radius: 10px;
   box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+}
+
+.section-card span {
+    color: #105acaff;
+    font-weight: 600;
+}
+
+.section-card span,
+.section-card p {
+    display: inline-block;
+    margin: 0 5px 0 0;
+}
+
+.info-line,
+.info-line-date {
+    display: flex;
+    align-items: center;
+}
+
+.info-line-date span,
+.info-line-date p {
+    color: rgb(134, 134, 134);
 }
 
 .update-card {

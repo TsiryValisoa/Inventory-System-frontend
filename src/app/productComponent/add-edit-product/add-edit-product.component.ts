@@ -28,6 +28,8 @@ export class AddEditProductComponent implements OnInit {
   categories: Category[] = []
   message: string | null = null;
   messageType: 'success' | 'error' |'' = '';
+  itemsPerPage: number = 10;
+  currentPage: number = 1;
 
   constructor(private apiService: ApiService, private router: Router) {}
 
@@ -42,7 +44,7 @@ export class AddEditProductComponent implements OnInit {
   }
 
   loadCategories(): void {
-    this.apiService.listAllCategories('').subscribe({
+    this.apiService.listAllCategories(this.currentPage, this.itemsPerPage,'').subscribe({
       next: (response) => {
         if (response.status === 200) {
           this.categories = response.categories;

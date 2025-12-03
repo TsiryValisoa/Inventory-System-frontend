@@ -18,7 +18,7 @@ export class ProductComponent implements OnInit {
 
   products: Product[] = [];
   message: string | null = null;
-  currentPage: number = 1;
+  currentPage: number = 0;
   totalPages: number = 0;
   itemsPerPage: number = 10;
   messageType: 'success' | 'error' |'' = '';
@@ -27,6 +27,8 @@ export class ProductComponent implements OnInit {
   searchProduct: string = '';
   categoryId: string = '';
   categories: Category[] = [];
+  valueToSearch: string = '';
+  searchStatus: string = '';
 
   constructor(private apiService: ApiService, private router: Router) {}
 
@@ -39,16 +41,20 @@ export class ProductComponent implements OnInit {
 
     const categoryIdForApi = this.categoryId === '' ? null : parseInt(this.categoryId)
 
-    this.apiService.listAllProducts(this.searchProduct, categoryIdForApi!).subscribe({
+    this.apiService.listAllProducts(this.currentPage, this.itemsPerPage, this.searchProduct, categoryIdForApi!).subscribe({
       next: (response: any) => {
 
-        const products = response.products || [];
-        this.totalPages = Math.ceil(products.length / this.itemsPerPage);
+        if (response.totalPage === 0) {
+            this.totalPages = 0;
+            this.currentPage = 0;
+        } else {
+            this.totalPages = response.totalPage;
+            this.currentPage = response.currentPage + 1;
+        }
 
-        this.products = products.slice(
-          (this.currentPage - 1) * this.itemsPerPage,
-          this.currentPage * this.itemsPerPage
-        ).map((p: Product) => ({
+        const products = response.products || [];
+
+        this.products = products.map((p: Product) => ({
           ...p,
           imageUrl: `${environment.apiUrl}/products/image/${p.id}`
         }));
@@ -60,7 +66,7 @@ export class ProductComponent implements OnInit {
   }
 
   loadCategories(): void {
-    this.apiService.listAllCategories('').subscribe({
+    this.apiService.listAllCategories(this.currentPage, this.itemsPerPage,'').subscribe({
       next: (response) => {
         if (response.status === 200) {
           this.categories = response.categories;
@@ -112,7 +118,13 @@ export class ProductComponent implements OnInit {
 
   //Navigate to next/previous page
   onPageChange(page: number) : void {
-    this.currentPage = page;
+    this.currentPage = page - 1;
+    this.getProducts();
+  }
+
+  handleSearch() : void {
+    this.currentPage = 0;
+    this.valueToSearch = this.searchProduct || this.searchStatus;
     this.getProducts();
   }
 

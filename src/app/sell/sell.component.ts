@@ -20,6 +20,8 @@ export class SellComponent implements OnInit {
   description: string = '';
   message: string | null = null;
   messageType: 'success' | 'error' |'' = '';
+  currentPage: number = 1;
+  itemsPerPage: number = 10;
 
   constructor(private apiService: ApiService) {}
 
@@ -32,7 +34,7 @@ export class SellComponent implements OnInit {
     //Products
     const categoryIdForApi = this.categoryId === '' ? null : parseInt(this.categoryId)
 
-    this.apiService.listAllProducts(this.search, categoryIdForApi!).subscribe({
+    this.apiService.listAllProducts(this.currentPage, this.itemsPerPage, this.search, categoryIdForApi!).subscribe({
       next: (response) => {
         if (response.status === 200) {
           this.products = response.products;

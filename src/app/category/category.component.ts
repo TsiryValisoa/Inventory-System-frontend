@@ -3,10 +3,11 @@ import { Category } from './category.interface';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../Service/api.service';
+import { PaginationComponent } from '../pagination/pagination.component';
 
 @Component({
   selector: 'app-category',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, PaginationComponent],
   templateUrl: './category.component.html',
   styleUrl: './category.component.css'
 })
@@ -21,6 +22,11 @@ export class CategoryComponent implements OnInit {
   categoryToDeleteId: string | null = null;
   searchCategory: string = '';
   messageType: 'success' | 'error' |'' = '';
+  currentPage: number = 0;
+  totalPages: number = 0;
+  itemsPerPage: number = 10;
+  valueToSearch: string = '';
+  searchStatus: string = '';
 
   constructor(private apiService: ApiService) {}
 
@@ -51,9 +57,18 @@ export class CategoryComponent implements OnInit {
 
   getCategories() : void {
 
-    this.apiService.listAllCategories(this.searchCategory).subscribe({
+    this.apiService.listAllCategories(this.currentPage, this.itemsPerPage, this.valueToSearch).subscribe({
       next: (response: any) => {
         if (response.status === 200) {
+
+          if (response.totalPage === 0) {
+            this.totalPages = 0;
+            this.currentPage = 0;
+          } else {
+            this.totalPages = response.totalPage;
+            this.currentPage = response.currentPage + 1;
+          }
+        
           this.categories = response.categories;
         }
       },
@@ -130,6 +145,17 @@ export class CategoryComponent implements OnInit {
   cancelDelete(): void {
     this.showDeleteModal = false;
     this.categoryToDeleteId = null;
+  }
+
+  handleSearch() : void {
+    this.currentPage = 0;
+    this.valueToSearch = this.searchCategory || this.searchStatus;
+    this.getCategories();
+  }
+
+  onPageChange(page: number) : void {
+    this.currentPage = page - 1;
+    this.getCategories();
   }
 
   showMessage(msg: string, type: 'success' | 'error' = 'error') {

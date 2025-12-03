@@ -114,13 +114,18 @@ export class ApiService {
     );
   }
 
-  listAllCategories(search: string) : Observable <any> {
-    return this.http.get(`${environment.apiUrl}/categories/all`,
-      {
-        params: {search},
-        headers: this.getHeader()
-      }
-  );
+  listAllCategories(page?: number, size?: number, search?: string) : Observable <any> {
+  
+    let params: any = {};
+
+    if (page !== undefined) params.page = page;
+    if (size !== undefined) params.size = size;
+    if (search) params.search = search;
+
+    return this.http.get(`${environment.apiUrl}/categories/all`, {
+      params,
+      headers: this.getHeader()
+    });
   }
 
   listCategoryById(id: string) : Observable <any> {
@@ -157,13 +162,18 @@ export class ApiService {
     );
   }
 
-  listAllSuppliers(search: string) : Observable<any> {
-    return this.http.get(`${environment.apiUrl}/suppliers/all`,
-      {
-        params: {search},
-        headers: this.getHeader()
-      }
-    );
+  listAllSuppliers(page?: number, size?:number, search?: string) : Observable<any> {
+   
+    let params: any = {};
+
+    if (page !== undefined) params.page = page;
+    if (size !== undefined) params.size = size;
+    if (search) params.search = search;
+
+    return this.http.get(`${environment.apiUrl}/suppliers/all`, {
+      params,
+      headers: this.getHeader()
+    });
   }
 
   listSupplierById(id: string) : Observable<any> {
@@ -201,19 +211,17 @@ export class ApiService {
     );
   } 
 
-  listAllProducts(search: string, categoryId: number | null) : Observable<any> {
-    let params = new HttpParams();
+  listAllProducts(page?: number, size?: number, search?: string, categoryId?: number | null) : Observable<any> {
+  
+    let params: any = {};
 
-    if (search) {
-        params = params.set('search', search);
-    }
-
-    if (categoryId) {
-        params = params.set('categoryId', categoryId.toString());
-    }
+    if (page !== undefined) params.page = page;
+    if (size !== undefined) params.size = size;
+    if (search) params.search = search;
+    if (categoryId != null) params.categoryId = categoryId;
 
     return this.http.get(`${environment.apiUrl}/products/all`, {
-      params: params,
+      params,
       headers: this.getHeader()
     });
   }

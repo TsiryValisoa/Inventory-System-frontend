@@ -15,9 +15,9 @@
             <div class="search-wrapper">
                 <div class="search-sup">
                     <input type="text" [(ngModel)]="searchSupplier" placeholder="Search supplier">
-                    <i class="fa-solid fa-magnifying-glass" (click)="getSuppliers()" title="Search"></i>
+                    <i class="fa-solid fa-magnifying-glass" (click)="handleSearch()" title="Search"></i>
                 </div>
-                <button (click)="searchSupplier = ''; getSuppliers()" class="refresh-btn" title="Refresh">
+                <button (click)="searchSupplier = ''; handleSearch()" class="refresh-btn" title="Refresh">
                     <i class="fa-solid fa-arrow-rotate-right"></i>
                 </button>
             </div>
@@ -61,4 +61,10 @@
             </div>
         </div>
      </div>
+
+     <app-pagination
+       [currentPage]="currentPage"
+       [totalPages]="totalPages"
+       (pageChange)="onPageChange($event)">
+    </app-pagination>
 </div>

@@ -4,10 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../Service/api.service';
 import { Router } from '@angular/router';
 import { Supplier } from './supplier.interface';
+import { PaginationComponent } from '../../pagination/pagination.component';
 
 @Component({
   selector: 'app-supplier',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, PaginationComponent],
   templateUrl: './supplier.component.html',
   styleUrl: './supplier.component.css'
 })
@@ -19,6 +20,11 @@ export class SupplierComponent implements OnInit{
   showDeleteModal: boolean = false;
   searchSupplier: string = '';
   messageType: 'success' | 'error' |'' = '';
+  currentPage: number = 0;
+  totalPages: number = 0;
+  itemsPerPage: number = 10;
+  valueToSearch: string = '';
+  searchStatus: string = '';
 
   constructor(private apiService: ApiService, private router: Router) {}
 
@@ -28,9 +34,18 @@ export class SupplierComponent implements OnInit{
 
   getSuppliers() : void {
 
-    this.apiService.listAllSuppliers(this.searchSupplier).subscribe({
+    this.apiService.listAllSuppliers(this.currentPage, this.itemsPerPage, this.searchSupplier).subscribe({
       next: (response: any) => {
         if (response.status === 200) {
+
+          if (response.totalPage === 0) {
+            this.totalPages = 0;
+            this.currentPage = 0;
+          } else {
+            this.totalPages = response.totalPage;
+            this.currentPage = response.currentPage + 1;
+          }
+
           this.suppliers = response.suppliers
         }
       },
@@ -76,6 +91,17 @@ export class SupplierComponent implements OnInit{
   cancelDelete() : void {
     this.showDeleteModal = false;
     this.supplierToDeleteId = null;
+  }
+
+  handleSearch() : void {
+    this.currentPage = 0;
+    this.valueToSearch = this.searchSupplier || this.searchStatus;
+    this.getSuppliers();
+  }
+
+  onPageChange(page: number) : void {
+    this.currentPage = page - 1;
+    this.getSuppliers();
   }
 
   showMessage(msg: string, type: 'success' | 'error' = 'error') {

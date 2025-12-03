@@ -19,6 +19,8 @@ export class PurchaseComponent implements OnInit {
   categoryId: string = '';
   search: string = '';
   messageType: 'success' | 'error' |'' = '';
+  currentPage: number = 1;
+  itemsPerPage: number = 10;
 
   formData: any = {
     productId: '',
@@ -38,7 +40,7 @@ export class PurchaseComponent implements OnInit {
     //Products
     const categoryIdForApi = this.categoryId === '' ? null : parseInt(this.categoryId)
 
-    this.apiService.listAllProducts(this.search, categoryIdForApi!).subscribe({
+    this.apiService.listAllProducts(this.currentPage, this.itemsPerPage, this.search, categoryIdForApi!).subscribe({
       next: (response) => {
         if (response.status === 200) {
           this.products = response.products;
@@ -52,7 +54,7 @@ export class PurchaseComponent implements OnInit {
     });
 
     //Suppliers
-    this.apiService.listAllSuppliers(this.search).subscribe({
+    this.apiService.listAllSuppliers(this.currentPage, this.itemsPerPage, this.search).subscribe({
       next: (response) => {
         if (response.status === 200) {
           this.suppliers = response.suppliers;

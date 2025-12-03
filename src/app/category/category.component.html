@@ -27,9 +27,9 @@
             <div class="search-wrapper">
                 <div class="search-cat">
                     <input type="text" [(ngModel)]="searchCategory" placeholder="Search category">
-                    <i class="fa-solid fa-magnifying-glass" (click)="getCategories()" title="Search"></i>
+                    <i class="fa-solid fa-magnifying-glass" (click)="handleSearch()" title="Search"></i>
                 </div>
-                <button (click)="searchCategory = ''; getCategories()" class="refresh-btn" title="Refresh">
+                <button (click)="searchCategory = ''; handleSearch()" class="refresh-btn" title="Refresh">
                     <i class="fa-solid fa-arrow-rotate-right"></i>
                 </button>
             </div>
@@ -60,4 +60,10 @@
             </div>
         </div>
      </div>
+
+     <app-pagination
+       [currentPage]="currentPage"
+       [totalPages]="totalPages"
+       (pageChange)="onPageChange($event)">
+    </app-pagination>
 </div>

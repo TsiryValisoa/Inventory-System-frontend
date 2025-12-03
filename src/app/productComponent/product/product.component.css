@@ -226,27 +226,31 @@
 }
     
 .product-info {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
      
-.product-info .name {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
+.product-info span {
+    color: #105acaff;
+    font-weight: 600;
 }
-     
-.product-info .name {
-    color: #2F4F4F;
+
+.product-info span,
+.product-info p {
+    display: inline-block;
+    margin: 0 5px 0 0;
 }
-     
-.product-info .sku,
-.product-info .price,
-.product-info .quantity,
-.product-info .expired{ 
-    color: #777;
-    font-size: 0.9rem;
-    margin-bottom: 5px;
+
+.info-line,
+.info-line-date {
+    display: flex;
+    align-items: center;
+}
+
+.info-line-date span,
+.info-line-date p {
+    color: rgb(134, 134, 134);
 }
      
 .product-actions {
