@@ -19,7 +19,7 @@ export class PurchaseComponent implements OnInit {
   categoryId: string = '';
   search: string = '';
   messageType: 'success' | 'error' |'' = '';
-  currentPage: number = 1;
+  currentPage: number = 0;
   itemsPerPage: number = 10;
 
   formData: any = {

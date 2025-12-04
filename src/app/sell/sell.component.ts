@@ -20,7 +20,7 @@ export class SellComponent implements OnInit {
   description: string = '';
   message: string | null = null;
   messageType: 'success' | 'error' |'' = '';
-  currentPage: number = 1;
+  currentPage: number = 0;
   itemsPerPage: number = 10;
 
   constructor(private apiService: ApiService) {}

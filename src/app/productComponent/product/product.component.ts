@@ -100,7 +100,7 @@ export class ProductComponent implements OnInit {
         next: (response: any) => {
         if (response.status === 200) {
           this.showMessage(response.message, 'success');
-          this.getProducts();
+          this.handleSearch();
         }
       },
       error: (error) => {

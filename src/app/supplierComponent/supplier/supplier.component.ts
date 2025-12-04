@@ -77,7 +77,7 @@ export class SupplierComponent implements OnInit{
       next: (response: any) => {
         if (response.status === 200) {
           this.showMessage(response.message, 'success');
-          this.getSuppliers();
+          this.handleSearch();
         }
       },
       error: (error) => {

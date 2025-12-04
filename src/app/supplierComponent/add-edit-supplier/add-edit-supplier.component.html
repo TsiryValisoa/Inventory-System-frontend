@@ -1,6 +1,6 @@
 <div class="supplier-form-component">
 
-    <p *ngIf="message" class="message">{{message}}</p>
+    <div *ngIf="message" [ngClass]="messageType" class="message">{{message}}</div>
 
     <h1>{{isEditing ? "Edit supplier" : "Add supplier"}}</h1>
 

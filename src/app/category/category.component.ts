@@ -46,7 +46,7 @@ export class CategoryComponent implements OnInit {
         if (response.status === 200) {
           this.showMessage(response.message, 'success');
           this.categoryName = '';
-          this.getCategories();
+          this.handleSearch();
         }
       },
       error: (error) => {
@@ -92,7 +92,7 @@ export class CategoryComponent implements OnInit {
           this.showMessage(response.message, 'success');
           this.categoryName = '';
           this.isEditing = false;
-          this.getCategories();
+          this.handleSearch();
         }
       },
       error: (error) => {
@@ -129,7 +129,7 @@ export class CategoryComponent implements OnInit {
         next: (response: any) => {
         if (response.status === 200) {
           this.showMessage(response.message, 'success');
-          this.getCategories();
+          this.handleSearch();
         }
       },
       error: (error) => {

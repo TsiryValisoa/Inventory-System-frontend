@@ -29,7 +29,7 @@ export class AddEditProductComponent implements OnInit {
   message: string | null = null;
   messageType: 'success' | 'error' |'' = '';
   itemsPerPage: number = 10;
-  currentPage: number = 1;
+  currentPage: number = 0;
 
   constructor(private apiService: ApiService, private router: Router) {}
 

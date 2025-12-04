@@ -15,6 +15,7 @@ export class AddEditSupplierComponent implements OnInit {
   message: string | null = null;
   isEditing: boolean = false;
   supplierId: string | null = null;
+  messageType: 'success' | 'error' |'' = '';
 
   formData: any = {
     name: '',
@@ -44,7 +45,7 @@ export class AddEditSupplierComponent implements OnInit {
             address: response.supplier.address
           };
         } else {
-          this.showMessage(response.message);
+          this.showMessage(response.message, 'error');
         }
       },
       error: (error) => {
@@ -72,10 +73,12 @@ export class AddEditSupplierComponent implements OnInit {
       this.apiService.updateSupplier(this.supplierId!, supplierData).subscribe({
         next: (reponse: any) => {
           if (reponse.status === 200) {
-            this.showMessage(reponse.message);
+            this.showMessage(reponse.message, 'success');
             setTimeout(() => {
               this.router.navigate(['/supplier']);
             }, 500);
+          } else {
+            this.showMessage(reponse.message, 'error')
           }
         },
         error: (error) => {
@@ -86,10 +89,12 @@ export class AddEditSupplierComponent implements OnInit {
       this.apiService.addSupplier(this.formData).subscribe({
         next: (response: any) => {
           if (response.status === 200) {
-            this.showMessage(response.message);
+            this.showMessage(response.message, 'success');
             setTimeout(() => {
               this.router.navigate(['/supplier']);
             }, 500);
+          } else {
+            this.showMessage(response.message, 'error')
           }
         },
         error: (error) => {
@@ -103,9 +108,9 @@ export class AddEditSupplierComponent implements OnInit {
     this.router.navigate(['/supplier']);
   }
 
-  showMessage(message: string) {
-    this.message = message;
-    //Disappear after
+   showMessage(msg: string, type: 'success' | 'error' = 'error') {
+    this.message = msg;
+    this.messageType = type;
     setTimeout(() => {
       this.message = null;
     }, 4000)
