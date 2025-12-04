@@ -4,7 +4,7 @@
 
     <header>
         <h1>Welcome to your profile</h1>
-        <button (click)="navigateToUserList()"><i class="fa-solid fa-eye" style="margin-right:8px;"></i>View all users</button>
+        <button (click)="navigateToUserList()" *ngIf="user?.role === 'ADMIN'"><i class="fa-solid fa-eye" style="margin-right:8px;"></i>View all users</button>
     </header>
 
     <form action="">

@@ -1,0 +1,39 @@
+<div class="auth-component">
+    <h2 class="title">Add new admin account</h2>
+    
+    <p *ngIf="message" class="message">{{message}}</p>
+        <form (ngSubmit)="handleSubmit()" class="form">
+            <label>
+                <input type="text" class="input" [(ngModel)]="formData.name" name="name" required>
+                <span>Name</span>
+            </label>
+        
+            <label>
+                <input type="email" class="input" [(ngModel)]="formData.email" name="email" required>
+                <span>Email</span>
+            </label>
+        
+            <label>
+                <input type="password" class="input" [(ngModel)]="formData.password" name="password" required>
+                <span>Password</span>
+            </label>
+            
+            <label>
+                <input type="text" class="input" [(ngModel)]="formData.phoneNumber" name="phoneNumber" required>
+                <span>Phone number</span>
+            </label>
+
+            <div class="select-icon-wrapper">
+                <i class="fa-solid fa-bars status-icon"></i>
+                <select name="role">
+                    <option value="">Select role</option>
+                    <option *ngFor="let roles of roleType" [value]="roles">{{roles}}</option>
+                </select>
+            </div>
+
+            <div class="action-btn">
+                <button type="submit" class="submit">Save</button>
+                <button type="submit" class="cancel" (click)="returnToUserList()">Cancel</button>
+            </div>
+        </form>
+</div>

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../Service/api.service';
 import { User } from '../profile/user.interface';
 import { PaginationComponent } from '../../pagination/pagination.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users-list',
@@ -27,7 +28,7 @@ export class UsersListComponent implements OnInit {
   searchStatus: string = '';
   statusList: string[] = ['ADMIN', 'MANAGER'];
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit(): void {
     this.getAllUsers();
@@ -65,7 +66,7 @@ export class UsersListComponent implements OnInit {
         next: (response: any) => {
           if (response.status === 200) {
             this.showMessage(response.message, 'success');
-            this.getAllUsers();
+            this.handleSearch();
           } else {
             this.showMessage(response.message, 'error');
           }
@@ -78,6 +79,22 @@ export class UsersListComponent implements OnInit {
     this.cancelDelete();
   }
 
+  updateUserInfo() : void {
+  
+    this.apiService.updateUser(this.userId!, this.users).subscribe({
+      next: (response: any) => {
+        if (response.status === 200) {
+          this.showMessage(response.message, 'success');
+        } else {
+          this.showMessage(response.message, 'error');
+        }
+      },
+      error: (error) => {
+        this.showMessage(error?.error?.message || error?.messgae || "Unable to update user" + error);
+      }
+    });
+  }
+
   cancelDelete(): void {
     this.showDeleteModal = false;
     this.userToDeleteId = null;
@@ -87,6 +104,10 @@ export class UsersListComponent implements OnInit {
     this.currentPage = 0;
     this.valueToSearch = this.search || this.searchStatus;
     this.getAllUsers();
+  }
+
+  navigateToAddNewAdmin() : void {
+    this.router.navigate(['/user-admin'])
   }
 
   onPageChange(page: number) : void {
