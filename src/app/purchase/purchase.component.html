@@ -3,7 +3,7 @@
 
     <h1>Restock Inventory</h1>
 
-    <form (ngSubmit)="handleSubmit()">
+    <form>
 
         <div class="form-group">
             <label>Select Product :</label>
@@ -40,7 +40,8 @@
         </div>
 
         <div class="form-action">
-            <button class="purchase">Purchase</button>
+            <button class="purchase" (click)="handleSubmit()">Purchase</button>
+            <button class="purchase" (click)="returnToSupplier()">Return product</button>
             <button class="cancel" (click)="resetForm()" type="button">Cancel</button>
         </div>
 

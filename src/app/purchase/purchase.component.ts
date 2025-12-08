@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ApiService } from '../Service/api.service';
 import { Product } from '../productComponent/product/product.interface';
 import { Supplier } from '../supplierComponent/supplier/supplier.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-purchase',
@@ -29,7 +30,7 @@ export class PurchaseComponent implements OnInit {
     description: ''
   }
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private route: Router) {}
 
   ngOnInit(): void {
     this.getProductsAndSuppliers();
@@ -87,7 +88,42 @@ export class PurchaseComponent implements OnInit {
         if (response.status === 200) {
           this.showMessage(response.message, 'success');
           this.resetForm();
-          //TODO: redirect to transaction
+          setTimeout(() => {
+            this.route.navigate(['/transaction'])
+          }, 2000)
+        } else {
+          this.showMessage(response.message, 'error');
+        }
+      },
+      error: (error) => {
+        this.showMessage(error?.error?.message || error?.messgae || "Unable to restock inventory" + error);
+      }
+    });
+  }
+  
+
+  returnToSupplier() : void {
+
+    if (!this.formData.productId || !this.formData.supplierId || !this.formData.description) {
+      this.showMessage("All fields are required !", 'error');
+      return;
+    }
+
+    const payload = {
+      productId: Number(this.formData.productId),
+      supplierId: Number(this.formData.supplierId),
+      quantity: Number(this.formData.quantity),
+      description: this.formData.description
+    };
+
+    this.apiService.returnProduct(payload).subscribe({
+      next: (response: any) => {
+        if (response.status === 200) {
+          this.showMessage(response.message, 'success');
+          this.resetForm();
+          setTimeout(() => {
+            this.route.navigate(['/transaction'])
+          }, 2000)
         } else {
           this.showMessage(response.message, 'error');
         }
