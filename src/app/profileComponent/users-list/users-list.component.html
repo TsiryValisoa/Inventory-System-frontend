@@ -72,7 +72,7 @@
             </div>
 
             <div class="user-action">
-                <button title="Disable" class="disable-btn"><i class="fa-solid fa-box-archive"></i></button>
+                <button (click)="disableUser(user.id)" title="Disable" class="disable-btn"><i class="fa-solid fa-box-archive"></i></button>
                 <button (click)="deleteUser(user.id)" title="Delete" class="delete-btn"><i class="fa-solid fa-trash"></i></button>
             </div>
         </div>

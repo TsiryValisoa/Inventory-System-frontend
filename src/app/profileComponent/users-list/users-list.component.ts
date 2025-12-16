@@ -35,6 +35,7 @@ export class UsersListComponent implements OnInit {
   }
 
   getAllUsers() : void {
+
     this.apiService.getAllUser(this.currentPage, this.itemsPerPage, this.valueToSearch).subscribe({
       next: (response: any) => {
 
@@ -52,6 +53,24 @@ export class UsersListComponent implements OnInit {
         this.showMessage(error?.error?.message || error?.messgae || "Unable to get all users" + error);
       }
     }); 
+  }
+
+  disableUser(userId: string) : void {
+
+    console.log("User ID:", userId);
+    this.apiService.disableUser(userId).subscribe({
+      next: (response: any) => {
+        if (response.status === 200) {
+          this.showMessage(response.message, 'success');
+          this.handleSearch();
+        } else {
+          this.showMessage(response.message, 'error');
+        }
+      },
+      error: (error) => {
+        this.showMessage(error?.error?.message || error?.messgae || "Unable to disable user" + error);
+      }
+    });
   }
 
   deleteUser(userId: string) : void {

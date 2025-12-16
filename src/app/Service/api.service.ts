@@ -104,6 +104,36 @@ export class ApiService {
     );
   }
 
+  disableUser(id: string) : Observable<any> {
+    return this.http.put(`${environment.apiUrl}/users/disable/${id}`, {},
+      {
+        headers: this.getHeader()
+      }
+    );
+  }
+
+  enableUser(id: string) : Observable<any> {
+    return this.http.put(`${environment.apiUrl}/users/enable/${id}`, {},
+      {
+        headers: this.getHeader()
+      }
+    );
+  }
+
+  listAllDisableUsers(page?: number, size?: number, search?: string) : Observable<any> {
+
+    let params: any = {};
+
+    if (page !== undefined) params.page = page;
+    if (size !== undefined) params.size = size;
+    if (search) params.search = search;
+
+    return this.http.get(`${environment.apiUrl}/users/all-disabled`, {
+      params,
+      headers: this.getHeader()
+    });
+  }
+
   //Category API
   createCategory(body: any) : Observable<any> {
     return this.http.post(`${environment.apiUrl}/categories/add`,
