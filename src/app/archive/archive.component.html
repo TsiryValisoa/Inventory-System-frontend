@@ -1,1 +1,83 @@
-<p>archive works!</p>
+<div class="user-list-component">
+
+    <div *ngIf="message" class="message" [ngClass]="messageType">{{message}}</div>
+
+    <header>
+        <h1>All disabled users</h1>
+
+        <div class="user-controls">
+
+            <div class="search-wrapper">
+                <div class="search-sup">
+                    <input type="text" [(ngModel)]="search" placeholder="Search user...">
+                    <i class="fa-solid fa-magnifying-glass" (click)="handleSearch()" title="Search"></i>
+                </div>
+                <button (click)="search = ''; handleSearch()" class="refresh-btn" title="Refresh">
+                    <i class="fa-solid fa-arrow-rotate-right"></i>
+                </button>
+
+                <div class="select-search">
+                    <div class="select-icon-wrapper">
+                        <i class="fa-solid fa-bars status-icon"></i>
+                        <select [(ngModel)]="searchStatus" name="status" (change)="handleSearch()">
+                            <option value="">Search by status</option>
+                            <option *ngFor="let status of statusList" [value]="status">{{status}}</option>
+                        </select>
+                    </div>
+
+                    <button (click)="searchStatus = ''; handleSearch()" class="cancel-btn" title="cancel">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="user-list" *ngIf="users.length > 0">
+
+        <div class="user-item" *ngFor="let user of users">
+
+            <div class="user-info">
+                <div class="info-line">
+                    <span>Name :</span>
+                    <p>{{user.name}}</p>
+                </div>
+
+                <div class="info-line">
+                    <span>Email :</span>
+                    <p>{{user.email}}</p>
+                </div>
+
+                <div class="info-line">
+                    <span>Phone number :</span>
+                    <p>{{user.phoneNumber}}</p>
+                </div>
+
+                <div class="info-line">
+                    <span>Role :</span>
+                    <p>{{user.role}}</p>
+                </div>
+
+                <div class="info-line-date">
+                    <span>Created at :</span>
+                    <p>{{user.createdAt | date:'short'}}</p>
+                </div>
+
+                <div *ngIf="user.updatedAt"class="info-line-date">
+                    <span>Updated at :</span>
+                    <p>{{user.updatedAt | date:'short'}}</p>
+                </div>
+            </div>
+
+            <div class="user-action">
+                <button (click)="enableUser(user.id)" title="Enable" class="enable-btn"><i class="fa-solid fa-box"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <app-pagination
+        [currentPage]="currentPage"
+        [totalPages]="totalPages"
+        (pageChange)="onPageChange($event)">
+    </app-pagination>
+</div>

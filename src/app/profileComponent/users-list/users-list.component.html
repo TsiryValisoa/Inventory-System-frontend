@@ -67,7 +67,12 @@
 
                 <div class="info-line-date">
                     <span>created at :</span>
-                    <p>{{user.createdAt | date}}</p>
+                    <p>{{user.createdAt | date:'short'}}</p>
+                </div>
+
+                <div *ngIf="user.updatedAt"class="info-line-date">
+                    <span>Updated at :</span>
+                    <p>{{user.updatedAt | date:'short'}}</p>
                 </div>
             </div>
 

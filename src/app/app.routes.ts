@@ -15,6 +15,7 @@ import { ProfileComponent } from './profileComponent/profile/profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsersListComponent } from './profileComponent/users-list/users-list.component';
 import { UserAdminComponent } from './profileComponent/user-admin/user-admin.component';
+import { ArchiveComponent } from './archive/archive.component';
 
 export const routes: Routes = [
 
@@ -40,6 +41,7 @@ export const routes: Routes = [
     { path: 'user-list', component: UsersListComponent, canActivate: [GuardService] },
     { path: 'user-admin', component: UserAdminComponent, canActivate: [GuardService] },
     { path: 'dashboard', component: DashboardComponent, canActivate: [GuardService] },
+    { path: 'archive', component: ArchiveComponent, canActivate: [GuardService] },
 
     { 
         path: "",

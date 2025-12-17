@@ -57,7 +57,6 @@ export class UsersListComponent implements OnInit {
 
   disableUser(userId: string) : void {
 
-    console.log("User ID:", userId);
     this.apiService.disableUser(userId).subscribe({
       next: (response: any) => {
         if (response.status === 200) {

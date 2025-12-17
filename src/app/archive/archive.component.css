@@ -1,0 +1,259 @@
+.user-list-component {
+    padding: 20px;
+    background-color: #f3f4f6;
+}
+
+.message {
+    color: #fff;
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+header button {
+    padding: 12px 12px;
+    background-color: #105acaff;
+    font-size: 16px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+header button:hover {
+    background-color: #5e7fb1ff;
+}
+
+header button.refresh-btn {
+    background-color: #15b170;
+}
+
+header button.refresh-btn:hover {
+    background-color: #037c4a;
+}
+
+.left-header {
+    display: flex;
+    align-items: center;
+}
+
+.message.error {
+    background-color: #E34234;
+}
+
+.message.success {
+    background-color: #48ac48;
+}
+
+h1 {
+    color: #105acaff;
+    margin-right: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.add-user {
+    display: flex;
+    align-items: center;
+}
+
+.user-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 0.7;
+}
+
+.search-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    flex-wrap: wrap;
+}
+
+.search-sup {
+  position: relative;
+  width: 250px;
+}
+     
+.search-sup i {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #888;
+  font-size: 18px;
+}
+
+.search-sup i:hover {
+  color: #007bff;
+}
+
+.search-sup input {
+    width: 100%;
+    padding: 10px 40px 10px 15px; 
+    border: 1px solid #ddd;
+    font-size: 16px;
+    outline: none;
+    border-radius: 8px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.search-sup input:focus {
+    border-color: #5196fdff; 
+}
+
+.select-search {
+    display: flex;
+    align-items: center; 
+    gap: 10px;
+    width: fit-content;
+    margin-bottom: 0;
+}
+
+.select-icon-wrapper {
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.select-search .status-icon {
+    position: absolute;
+    left: 12px; 
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    font-size: 18px;
+    pointer-events: none;
+}
+
+.select-search .fa-bars {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%); 
+    color: #666; 
+    font-size: 18px;
+    pointer-events: none; 
+}
+
+.select-search select {
+    appearance: none; 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    padding: 10px 15px 10px 45px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-image: none;
+}
+
+.select-search select:focus {
+    border-color: #007bff;
+}
+
+.select-search button.cancel-btn {
+    background-color: #c52435;
+}
+
+.select-search button.cancel-btn:hover {
+    background-color: #880606;
+}
+
+.user-list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    margin-top: 50px;
+    flex-grow: 1;
+}
+
+.user-item {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between;
+    height: 100%; 
+}
+
+.user-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.user-info {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.user-info span {
+    color: #105acaff;
+    font-weight: 600;
+}
+
+.user-info span,
+.user-info p {
+    display: inline-block;
+    margin: 0 5px 0 0;
+}
+
+.info-line,
+.info-line-date {
+    display: flex;
+    align-items: center;
+}
+
+.info-line-date span,
+.info-line-date p {
+    color: rgb(134, 134, 134);
+}
+
+.user-action {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.enable-btn {
+    padding: 8px 15px;
+    margin: 0 5px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.enable-btn {
+    background-color: #15b170;
+}
+
+.enable-btn:hover {
+    background-color: #037c4a;
+}
