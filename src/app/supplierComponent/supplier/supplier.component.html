@@ -63,6 +63,7 @@
      </div>
 
      <app-pagination
+       *ngIf="totalPages > 0"
        [currentPage]="currentPage"
        [totalPages]="totalPages"
        (pageChange)="onPageChange($event)">
