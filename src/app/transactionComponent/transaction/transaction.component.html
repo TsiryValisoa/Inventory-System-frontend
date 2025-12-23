@@ -49,13 +49,13 @@
 
             <tbody>
                 <tr *ngFor="let transaction of transactions">
-                    <td>{{transaction.transactionType}}</td>
-                    <td>{{transaction.status}}</td>
-                    <td>{{transaction.totalPrice}}</td>
-                    <td>{{transaction.totalProducts}}</td>
-                    <td>{{transaction.description}}</td>
-                    <td>{{transaction.createdAt | date : "short"}}</td>
-                    <td (click)="navigateToTransactionDetails(transaction.id)">
+                    <td data-label="TYPE">{{transaction.transactionType}}</td>
+                    <td data-label="STATUS">{{transaction.status}}</td>
+                    <td data-label="TOTAL PRICE">{{transaction.totalPrice}}</td>
+                    <td data-label="TOTAL PRODUCTS">{{transaction.totalProducts}}</td>
+                    <td data-label="DESCRIPTION">{{transaction.description}}</td>
+                    <td data-label="DATE">{{transaction.createdAt | date : "short"}}</td>
+                    <td data-label="ACTIONS" (click)="navigateToTransactionDetails(transaction.id)">
                         <button>View details</button>
                     </td>
                 </tr>

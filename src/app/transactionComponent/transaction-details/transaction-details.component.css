@@ -80,11 +80,13 @@ h2 {
     display: flex;
     align-items: center; 
     gap: 15px;
-    width: fit-content;
-    margin-bottom: 20px; 
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto 20px auto;
     padding: 15px 20px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
 }
 
 .update-card .select-icon-wrapper {
@@ -173,7 +175,46 @@ h2 {
 }
 
 @media (max-width: 768px) {
-  .grid-container {
-    grid-template-columns: 1fr;
-  }
+    .transaction-details-component {
+        padding: 10px;
+        margin: 10px auto;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .update-card {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .update-card .select-icon-wrapper {
+        justify-content: space-between;
+    }
+
+    .update-card .select-icon-wrapper select {
+        flex-grow: 1;
+        min-width: 0; 
+    }
+
+    .update-card .status-icon {
+        display: none;
+    }
+    
+    .update-card .select-icon-wrapper label {
+        min-width: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .info-line {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .section-card {
+        text-align: left;
+    }
 }

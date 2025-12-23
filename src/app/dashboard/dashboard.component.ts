@@ -40,7 +40,7 @@ export class DashboardComponent implements OnInit {
   year: string = '';
 
   //Chart view dimensions, legend, and animations settings
-  view: [number, number] = [500, 300];
+  view: any = undefined;
   showLegend: boolean = true;
   showLabels: boolean = true;
   animations: boolean = true;
@@ -49,6 +49,12 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTransactions();
+    this.updateChartSize();
+  }
+
+  @HostListener('window:resize')
+  onResize() {
+    this.updateChartSize();
   }
 
   getTransactions(): void {
@@ -124,5 +130,20 @@ export class DashboardComponent implements OnInit {
       name: `Day ${day}`,
       value: dailyTotals[day]
     }));
+  }
+
+  updateChartSize() {
+
+    // Get the widht of the parent container (the dashboard)
+    const width = this.elRef.nativeElement.querySelector('.dashboard-component').offsetWidth;
+    
+    // Adjust based on the layout
+    if (window.innerWidth < 900) {
+      this.view = [width - 60, 300];
+      this.showLegend = false;
+    } else {
+      this.view = [(width / 2) - 60, 300];
+      this.showLegend = true;
+    }
   }
 }

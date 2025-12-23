@@ -8,6 +8,7 @@
     align-items: center;
     justify-content: flex-start;
     margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 .message {
@@ -104,6 +105,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 5px;
+  flex-wrap: wrap;
 }
 
 .search-sup i {
@@ -230,4 +232,52 @@
 
 .modal-buttons .no:hover {
     background-color: #105acaff;
+}
+
+@media (max-width: 768px) {
+
+    .supplier-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .supplier-controls {
+        margin-top: 15px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .search-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        width: 100%;
+        justify-content: flex-start
+    }
+
+    .search-sup {
+        width: calc(100% - 70px);
+        min-width: 200px;
+    }
+
+    .supllier-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .supllier-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .supplier-actions {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        border-top: 1px solid #eee;
+        padding-top: 15px;
+        margin-left: 0;
+    }
 }

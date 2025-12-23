@@ -19,6 +19,7 @@ export class LoginComponent {
   };
 
   message: string | null = null;
+  messageType: 'success' | 'error' |'' = '';
 
   constructor(private apiService: ApiService, private router: Router) {}
 
@@ -26,7 +27,7 @@ export class LoginComponent {
     if (!this.formData.email ||
         !this.formData.password
     ) {
-      this.showMessage("All fields are required !");
+      this.showMessage("All fields are required !", 'error');
       return;
     }
 
@@ -44,9 +45,9 @@ export class LoginComponent {
     }
   }
 
-  showMessage(message: string) {
-    this.message = message;
-    //Disappear after
+  showMessage(msg: string, type: 'success' | 'error' = 'error') {
+    this.message = msg;
+    this.messageType = type;
     setTimeout(() => {
       this.message = null;
     }, 4000)

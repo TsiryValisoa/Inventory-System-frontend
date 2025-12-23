@@ -1,7 +1,7 @@
 <div class="auth-component">
     <h2 class="title">Register</h2>
     
-    <p *ngIf="message" class="message">{{message}}</p>
+    <div *ngIf="message" class="message" [ngClass]="messageType">{{message}}</div>
         <form (ngSubmit)="handleSubmit()" class="form">
             <label>
                 <input type="text" class="input" [(ngModel)]="formData.name" name="name" required>

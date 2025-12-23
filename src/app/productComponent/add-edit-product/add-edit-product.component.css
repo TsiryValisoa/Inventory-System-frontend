@@ -5,7 +5,7 @@
     justify-content: flex-start;
     min-height: 100%;
     background-color: #f7f7f7;
-    padding-top: 30px;
+    padding: 30px 10px
 }
 
 h1 {
@@ -37,14 +37,14 @@ h1 {
 }
 
 form {
-    width: 90%; 
+    width: 100%; 
     max-width: 600px;
     background-color: #ffffff;
     display: flex;
     align-items: center;
     flex-direction: column;
     border-radius: 12px;
-    padding: 30px;
+    padding: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.62);
     gap: 20px;
 }
@@ -162,13 +162,13 @@ form {
 
 .form-row {
     display: flex;
-    gap: 50px;
+    flex-wrap: wrap;
+    gap: 20px;
     width: 100%;
 }
 
 .form-row label {
     flex: 1;
-    min-width: 0;
 }
 
 @media (max-width: 500px) {
@@ -189,9 +189,9 @@ button {
 }
 
 input[type="date"] {
-    width: 220px;
-    padding: 10px 12px;
-    font-size: 1em;
+    width: 100% !important;
+    padding: 1rem 0.5rem;
+    font-size: 16px;
     color: #333;
     background-color: #f9f9f9;
     border: 1px solid #ccc;
@@ -216,13 +216,13 @@ button:hover {
 .image-upload-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; 
-    gap: 15px;
-    padding: 20px;
+    width: 100%;
+    max-width: 100%;
+    padding: 15px;
     border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #f9f9f9;
-    max-width: 600px;
+    overflow: hidden;
 }
 
 .image-flex-wrapper {
@@ -230,6 +230,7 @@ button:hover {
     gap: 30px;
     align-items: center;
     width: 100%;
+    flex-wrap: wrap;
 }
 
 .image-controls {

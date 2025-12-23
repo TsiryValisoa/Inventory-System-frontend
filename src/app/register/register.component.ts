@@ -21,6 +21,7 @@ export class RegisterComponent {
   };
 
   message: string | null = null;
+  messageType: 'success' | 'error' |'' = '';
 
   constructor(private apiService: ApiService, private router: Router) {}
 
@@ -30,16 +31,17 @@ export class RegisterComponent {
         !this.formData.password ||
         !this.formData.phoneNumber
     ) {
-      this.showMessage("All fields are required !");
+      this.showMessage("All fields are required !", 'error');
       return;
     }
 
     try {
       const response: any = await firstValueFrom(this.apiService.registerUser(this.formData));
       if (response.status === 200) {
-        this.showMessage(response.message)
-        //TODO: redirect to user info
-        this.router.navigate(["/login"]);
+        this.showMessage(response.message, 'success')
+        setTimeout(() => {
+          this.router.navigate(['/login']);
+        }, 4000);
       }
     } catch (error: any) {
       console.log(error);
@@ -48,11 +50,11 @@ export class RegisterComponent {
     }
   }
 
-  showMessage(message: string) {
-    this.message = message;
-    //Disappear after
+  showMessage(msg: string, type: 'success' | 'error' = 'error') {
+    this.message = msg;
+    this.messageType = type;
     setTimeout(() => {
-      this.message = null
+      this.message = null;
     }, 4000)
   }
  
