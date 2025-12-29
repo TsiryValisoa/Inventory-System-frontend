@@ -9,8 +9,6 @@
 button {
     padding: 10px 15px;
     font-size: 14px;
-    background-color: #c250c2;
-    background-color: #17a2b8;
     color: #ffffff;
     font-weight: 800;
     border-radius: 5px;
@@ -24,7 +22,6 @@ button:hover {
 
 .message {
     background-color: #d4edda;
-    color: #155724;
     padding: 10px;
     border-radius: 5px;
     text-align: center;
